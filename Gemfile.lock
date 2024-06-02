@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    bcrypt (3.1.20)
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
@@ -244,6 +245,7 @@ PLATFORMS
   arm64-darwin-20
 
 DEPENDENCIES
+  bcrypt
   bootsnap
   capybara
   debug
