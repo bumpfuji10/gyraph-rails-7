@@ -1,17 +1,16 @@
-<h1 style="text-align: center;">
+<h1 class="signup-header">
   <%= link_to("Gyraph", "/")%>
 </h1>
-<div style="text-align: center;">新規登録</div>
+<div class="signup-header">新規登録</div>
 <%= form_with model: @user, local: true do |form| %>
-  <div class="signup-field" style="display: grid; gap: 10px;">
+  <div class="signup-field-wrapper">
     <label>名前</label>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "signup-field" %>
     <label>メールアドレス</label>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "signup-field" %>
     <label>パスワード</label>
-    <%= form.password_field :password %>
-  </div>
-  <div style="text-align: center; margin-top: 10px;">
+    <%= form.password_field :password, class: "signup-field" %>
+
     <%= form.submit "新規登録", class: "basic-btn" %>
   </div>
 <% end %>

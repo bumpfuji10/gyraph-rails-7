@@ -1,0 +1,73 @@
+// basic stylesheet
+
+body {
+  background-color: #f5f6f6;
+  height: 100vh;
+  width: 30%;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    width: 70%;
+  }
+}
+
+a, a:visited {
+  color: inherit;
+  text-decoration:none;
+}
+
+.basic-btn {
+  height: 40px;
+  border-radius: 6px;
+  font-size: 15px;
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background-color: #71C7EB;
+  margin-top: 20px;
+}
+
+.basic-btn:hover {
+  background-color: #9acde2;
+}
+
+input {
+  font-size: 14px;
+}
+
+.basic-background {
+  height: 100vh;
+  background-color: #f5f6f6;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  padding: 4px 0 4px 0;
+}
+
+.base-center-logo {
+  margin: 40px 0 20px 0;
+  font-weight: 600;
+  font-size: 25px;
+  color: #71C7EB;
+}
+
+.base-center-text {
+  text-align: center;
+  font-weight: 600;
+}
+
+.base-main-zone {
+  margin: 8px;
+  display: grid;
+  justify-items: center;
+}
+
