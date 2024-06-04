@@ -24,24 +24,50 @@ RSpec.describe UsersController, type: :request do
   end
 
   describe "create" do
-    let(:params) {
-      {
-        user: {
-          name: "testくん",
-          email: "test@testhoge.com",
-          password: "password"
+
+    context "valid params" do
+      let(:params) {
+        {
+          user: {
+            name: "testくん",
+            email: "test@testhoge.com",
+            password: "password"
+          }
         }
       }
-    }
-    let(:request) { post("/users", params: params) }
+      let(:request) { post("/users", params: params) }
 
-    it "ステータスコード201" do
-      request
-      expect(response.status).to eq 201
+      it "ステータスコード201" do
+        request
+        expect(response.status).to eq 201
+      end
+
+      it "Userインスタンス1増加" do
+        expect { request }.to change { User.count }.by(1)
+      end
     end
 
-    it "Userインスタンス1増加" do
-      expect { request }.to change { User.count }.by(1)
+    context "invalid params" do
+      let(:params) {
+        {
+          user: {
+            name: nil,
+            email: nil,
+            password: nil
+          }
+        }
+      }
+      let(:request) { post("/users", params: params) }
+
+      it "ステータスコード422" do
+        request
+        expect(response.status).to eq 422
+      end
+
+      it "Userインスタンス変動なし" do
+        request
+        expect { request }.to change { User.count }.by(0)
+      end
     end
   end
 
