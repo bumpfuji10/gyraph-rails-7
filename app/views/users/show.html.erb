@@ -1,2 +1,7 @@
-<%= @user.name %>
-<%= @user.email %>
+<%= render 'parts/login_header' %>
+
+<div class="user-board" style="display: grid; justify-content: space-around; solid; border-radius: 6px; padding: 10px; width: 190px; background-color: white;">
+  <h1 style="text-align: center"><%= @user.name %></h1>
+  <p style="text-align: center;"><%= extract_domain_from_email(@user.email) %></p>
+  <%= link_to("プロフィールを編集する", "#", class: "basic-btn", style: "color: white; font-size: 13px; padding: 0 6px;") %>
+<div>
