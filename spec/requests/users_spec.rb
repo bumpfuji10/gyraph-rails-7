@@ -37,9 +37,9 @@ RSpec.describe UsersController, type: :request do
       }
       let(:request) { post("/users", params: params) }
 
-      it "ステータスコード201" do
+      it "ステータスコード302" do
         request
-        expect(response.status).to eq 201
+        expect(response.status).to eq 302
       end
 
       it "Userインスタンス1増加" do
