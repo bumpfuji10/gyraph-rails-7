@@ -1,11 +1,13 @@
+.signup-header {
+  padding-top: 20px;
+  display: grid;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
 .user-form-wrapper {
   max-width: 300px;
   margin: 0 auto;
-}
-
-.signup-header {
-  display: grid;
-  gap: 20px;
 }
 
 .signup-field-wrapper {

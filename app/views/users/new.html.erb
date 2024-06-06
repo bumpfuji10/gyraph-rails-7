@@ -1,6 +1,7 @@
 <div class="signup-header">
-  <h1><%= link_to("Gyraph", "/")%></h1>
-  <h2>新規登録</h2>
+  <h1><%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto;")%></h1>
+  <h2>Gyraphへようこそ！</h2>
+  <p>無料の新規登録でGyraphをはじめましょう。</p>
 </div>
 <div class="user-form-wrapper">
   <%= form_with model: @user, local: true do |form| %>
