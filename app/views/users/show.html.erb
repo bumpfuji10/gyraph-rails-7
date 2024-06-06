@@ -1,2 +1,11 @@
-<%= @user.name %>
-<%= @user.email %>
+<%= render 'parts/login_header' %>
+
+<div class="user-board-wrapper">
+  <div class="user-board">
+</div>
+  <div class="user-board-items">
+    <h1 class="user-board-items-name"><%= @user.name %></h1>
+    <p class="user-board-items-id"><%= extract_domain_from_email(@user.email) %></p>
+  </div>
+  <%= link_to("プロフィールを編集する", "#", class: "basic-btn", style: "color: white; font-size: 12px; padding: 0 6px;") %>
+<div>

@@ -1,0 +1,24 @@
+.user-board-wrapper {
+  background-color: white;
+  border-radius: 6px;
+}
+.user-board {
+  display: grid;
+  padding: 20px;
+  width: 190px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+  &-items {
+
+    &-name, &-id {
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    &-id {
+      margin-bottom: 10px;
+    }
+  }
+}

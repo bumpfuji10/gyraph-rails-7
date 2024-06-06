@@ -1,0 +1,41 @@
+/* base.scss */
+
+/* リセットCSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+
+/* リストのデフォルトスタイルをリセット */
+ol, ul {
+  list-style: none;
+}
+
+/* ブロック要素とインライン要素のデフォルトスタイルをリセット */
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
