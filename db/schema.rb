@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_06_152438) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_08_155532) do
+  create_table "practice_record_details", force: :cascade do |t|
+    t.integer "practice_record_id", null: false
+    t.string "activity_title", null: false
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["practice_record_id"], name: "index_practice_record_details_on_practice_record_id"
+  end
+
   create_table "practice_records", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "title", null: false
@@ -30,5 +39,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_06_152438) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "practice_record_details", "practice_records"
   add_foreign_key "practice_records", "users"
 end
