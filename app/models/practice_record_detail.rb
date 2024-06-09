@@ -3,5 +3,4 @@ class PracticeRecordDetail < ApplicationRecord
 
   validates :activity_title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 10000 }
-
 end
