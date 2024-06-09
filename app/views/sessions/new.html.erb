@@ -18,6 +18,10 @@
   <% end %>
 </div>
 
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
 <p style="text-align: center; margin-top: 10px;">
   <%= link_to("会員登録はこちら", new_user_path, style: "color: rgb(113, 199, 235);") %>
 </p>
