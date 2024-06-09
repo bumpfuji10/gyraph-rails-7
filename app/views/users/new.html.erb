@@ -1,9 +1,9 @@
 <div class="signup-header">
-  <h1><%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto;")%></h1>
+  <%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto; font-size: 30px;")%>
   <div>
     <%= image_tag("gyraph_sphere", width: "60", height: "60") %>
   </div>
-  <h2>Gyraphへようこそ！</h2>
+  <h1 style="font-size: 24px;">Gyraphへようこそ！</h1>
   <p>無料の新規登録でGyraphをはじめましょう。</p>
 </div>
 <div class="user-form-wrapper">
@@ -18,5 +18,9 @@
 
       <%= form.submit "新規登録", class: "basic-btn" %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
+
+<p style="text-align: center; margin-top: 10px;">
+  すでにアカウントをお持ちの場合は<%= link_to("こちら", login_path, style: "color: rgb(113, 199, 235);") %>からログイン
+</p>
