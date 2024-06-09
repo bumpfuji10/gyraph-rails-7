@@ -1,0 +1,20 @@
+<div class="signup-header">
+  <h1><%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto;")%></h1>
+  <div>
+    <%= image_tag("gyraph_sphere", width: "60", height: "60") %>
+  </div>
+  <h2>ログインしてください</h2>
+  <p>メールアドレスとパスワードを入力してください。</p>
+</div>
+<div class="user-form-wrapper">
+  <%= form_with url: login_path, local: true do |form| %>
+    <div class="signup-field-wrapper">
+      <label>メールアドレス</label>
+      <%= form.text_field :email, class: "signup-field" %>
+      <label>パスワード</label>
+      <%= form.password_field :password, class: "signup-field" %>
+
+      <%= form.submit "ログイン", class: "basic-btn" %>
+    </div>
+  </div>
+<% end %>
