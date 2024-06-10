@@ -1,20 +1,20 @@
-<div class="signup-header">
+<div class="signup-and-login-header">
   <%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto; font-size: 30px;")%>
-  <div>
+  <div class="gyraph-sphere">
     <%= image_tag("gyraph_sphere", width: "60", height: "60") %>
   </div>
-  <h1 style="font-size: 24px;">Gyraphへようこそ！</h1>
+  <h1 class="welcome-gyraph">Gyraphへようこそ！</h1>
   <p>無料の新規登録でGyraphをはじめましょう。</p>
 </div>
 <div class="user-form-wrapper">
   <%= form_with model: @user, local: true do |form| %>
-    <div class="signup-field-wrapper">
+    <div class="signup-and-login-field-wrapper">
       <label>名前</label>
-      <%= form.text_field :name, class: "signup-field" %>
+      <%= form.text_field :name, class: "signup-and-login-field" %>
       <label>メールアドレス</label>
-      <%= form.text_field :email, class: "signup-field" %>
+      <%= form.text_field :email, class: "signup-and-login-field" %>
       <label>パスワード</label>
-      <%= form.password_field :password, class: "signup-field" %>
+      <%= form.password_field :password, class: "signup-and-login-field" %>
 
       <%= form.submit "新規登録", class: "basic-btn" %>
     </div>

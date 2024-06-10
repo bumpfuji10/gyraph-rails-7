@@ -1,0 +1,54 @@
+.signup-and-login-header {
+  padding-top: 20px;
+  display: grid;
+  gap: 20px;
+  padding-bottom: 20px;
+  justify-content: space-around;
+}
+
+.gyraph-logo {
+  height: 40px;
+  width: 100px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background-color: #71C7EB;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 1.72px;
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+}
+
+.welcome-gyraph {
+  font-size: 24px;
+  text-align: center;
+}
+
+.gyraph-sphere{
+  text-align: center;
+}
+
+.user-form-wrapper {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.signup-and-login-field-wrapper {
+  display: grid;
+  gap: 10px;
+}
+
+.signup-and-login-field {
+  border:0;
+  padding:10px;
+  border:solid 1px #ccc;
+  border-radius: 4px;
+}
+
+.signup-field {
+  display: grid;
+  gap: 10px;
+}
