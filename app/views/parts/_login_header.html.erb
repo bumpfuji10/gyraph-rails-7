@@ -2,7 +2,7 @@
   <header>
     <div class="header-container" style="display: flex;">
       <nav class="gyraph-logo" style="">
-        <%= link_to("Gyraph", "/") %>
+        <%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white; color: white; width: 140px; padding: 25px; margin: 0 auto; font-size: 30px;")%>
       </nav>
       <div class="rightNavs">
         <%= link_to("日誌を書く", "#", class: "header-basic-btn", style: "color: white;") %>
@@ -14,5 +14,6 @@
         </div>
       </div>
     </div>
+      <%= button_to 'ログアウト', logout_path, method: :delete, class: 'logout-button' %>
   </header>
 </div>
