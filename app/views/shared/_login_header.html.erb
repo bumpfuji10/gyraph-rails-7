@@ -4,11 +4,13 @@
       <%= link_to("Gyraph", "/practice_records", class: "gyraph-logo")%>
       <div class="rightNavs">
         <%= link_to("日誌を書く", "#", class: "header-basic-btn") %>
+
+        <%= render 'shared/header_toggle' %>
+
         <div style="position: relative;">
           <div class="userIcon">
             <%# <img src="/src/assets/user.svg" alt=""> %>
           </div>
-          <%# <header-toggle ref="toggle" :is_show_toggle="is_show_toggle"/> %>
         </div>
       </div>
     </div>
