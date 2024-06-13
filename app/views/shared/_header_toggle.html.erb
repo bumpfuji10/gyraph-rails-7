@@ -2,20 +2,20 @@
   <%= image_tag 'user.svg', class: 'user-icon', data: { action: "click->toggle#toggle" } %>
   <ul class="toggle-ul hidden" data-toggle-target="menu">
     <li class="toggle-list">
-      <%= image_tag 'user.svg', class: 'toggle-list-icon' %>
+      <%# <%= image_tag 'user.svg', class: 'toggle-list-icon' %>
       <%= link_to "マイページ", user_path(current_user) %>
     </li>
     <li class="toggle-list">
-      <%= image_tag 'heart.svg', class: 'toggle-list-icon' %>
+      <%# <%= image_tag 'heart.svg', class: 'toggle-list-icon' %>
       いいねした日誌
     </li>
     <li class="toggle-list">
-      <%= image_tag 'pen.svg', class: 'toggle-list-icon' %>
+      <%# <%= image_tag 'pen.svg', class: 'toggle-list-icon' %>
       日誌を書く
     </li>
     <br>
     <li class="toggle-list">
-      <%= image_tag 'logout.svg', class: 'toggle-list-icon' %>
+      <%# <%= image_tag 'logout.svg', class: 'toggle-list-icon' %>
       <%= link_to 'ログアウト', logout_path, data: { controller: 'logout', action: 'click->logout#logout' }, class: 'logout-button' %>
     </li>
   </ul>

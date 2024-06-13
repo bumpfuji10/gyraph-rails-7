@@ -7,7 +7,7 @@
 }
 
 .toggle-ul {
-  width: 170px;
+  width: 130px;
   position: absolute;
   top: 100%;
   right: -30px;
@@ -24,6 +24,18 @@
   display: flex;
   align-items: center;
   padding: 10px;
+  font-size: 15px;
+  color: #212529;
+  cursor: pointer;
+}
+
+.toggle-list:hover {
+  background-color: #f8f9fa;
+}
+
+.toggle-list a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .toggle-list-icon {
