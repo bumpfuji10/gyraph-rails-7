@@ -1,9 +1,9 @@
-<div class="setting-toggle">
-  <button>Toggle Menu</button>
-  <ul class="toggle-ul hidden">
+<div class="setting-toggle" data-controller="toggle">
+  <%= image_tag 'user.svg', class: 'user-icon', data: { action: "click->toggle#toggle" } %>
+  <ul class="toggle-ul hidden" data-toggle-target="menu">
     <li class="toggle-list">
       <%= image_tag 'user.svg', class: 'toggle-list-icon' %>
-      マイページ
+      <%= link_to "マイページ", user_path(current_user) %>
     </li>
     <li class="toggle-list">
       <%= image_tag 'heart.svg', class: 'toggle-list-icon' %>
@@ -16,7 +16,7 @@
     <br>
     <li class="toggle-list">
       <%= image_tag 'logout.svg', class: 'toggle-list-icon' %>
-      ログアウト
+      <%= link_to 'ログアウト', logout_path, data: { controller: 'logout', action: 'click->logout#logout' }, class: 'logout-button' %>
     </li>
   </ul>
 </div>

@@ -4,16 +4,9 @@
       <%= link_to("Gyraph", "/practice_records", class: "gyraph-logo")%>
       <div class="rightNavs">
         <%= link_to("日誌を書く", "#", class: "header-basic-btn") %>
-
         <%= render 'shared/header_toggle' %>
-
-        <div style="position: relative;">
-          <div class="userIcon">
-            <%# <img src="/src/assets/user.svg" alt=""> %>
-          </div>
-        </div>
       </div>
+
     </div>
-      <%= button_to 'ログアウト', logout_path, method: :delete, class: 'logout-button' %>
   </header>
 </div>

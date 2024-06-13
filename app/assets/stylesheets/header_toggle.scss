@@ -1,0 +1,42 @@
+.hidden {
+  display: none;
+}
+
+.setting-toggle {
+  position: relative; /* 親要素に相対位置を設定 */
+}
+
+.toggle-ul {
+  width: 170px;
+  position: absolute;
+  top: 100%;
+  right: -30px;
+  background-color: white;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 6px;
+}
+
+.toggle-list {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.toggle-list-icon {
+  margin-right: 5px;
+}
+
+.toggle-button {
+  cursor: pointer;
+}
+
+.user-icon {
+  border: 1px solid gray;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 50%;
+}
