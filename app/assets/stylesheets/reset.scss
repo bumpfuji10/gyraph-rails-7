@@ -1,6 +1,10 @@
 /* base.scss */
 
 /* リセットCSS */
+a, a:visited {
+  text-decoration:none;
+}
+
 * {
   margin: 0;
   padding: 0;

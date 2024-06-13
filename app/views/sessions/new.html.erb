@@ -1,17 +1,17 @@
-<div class="signup-header">
-  <%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto; font-size: 30px;")%>
-  <div>
+<div class="signup-and-login-header">
+  <%= link_to("Gyraph", "/", class: "gyraph-logo") %>
+  <div class="gyraph-sphere">
     <%= image_tag("gyraph_sphere", width: "60", height: "60") %>
   </div>
   <h1 style="font-size: 24px;">ログイン</h1>
 </div>
 <div class="user-form-wrapper">
   <%= form_with url: login_path, local: true do |form| %>
-    <div class="signup-field-wrapper">
+    <div class="signup-and-login-field-wrapper">
       <label>メールアドレス</label>
-      <%= form.text_field :email, class: "signup-field" %>
+      <%= form.text_field :email, class: "signup-and-login-field", autocomplete: "email", autocorrect: "off", autocapitalize: "none" %>
       <label>パスワード</label>
-      <%= form.password_field :password, class: "signup-field" %>
+      <%= form.password_field :password, class: "signup-and-login-field", autocomplete: "current-password", autocorrect: "off", autocapitalize: "none" %>
 
       <%= form.submit "ログイン", class: "basic-btn" %>
     </div>
