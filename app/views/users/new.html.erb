@@ -1,9 +1,6 @@
-<div class="signup-and-login-header">
-  <%= link_to("Gyraph", "/", class: "gyraph-logo", style: "color: white;     color: white; width: 140px; padding: 25px; margin: 0 auto; font-size: 30px;")%>
-  <div class="gyraph-sphere">
-    <%= image_tag("gyraph_sphere", width: "60", height: "60") %>
-  </div>
-  <h1 class="welcome-gyraph">Gyraphへようこそ！</h1>
+<%= render 'shared/basic_header' %>
+<div class="flex flex-col text-center gap-5 p-10">
+  <h1 class="text-2xl font-semibold">Gyraphへようこそ！</h1>
   <p>無料の新規登録でGyraphをはじめましょう。</p>
 </div>
 <div class="user-form-wrapper">

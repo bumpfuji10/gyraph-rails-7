@@ -1,9 +1,6 @@
-<div class="signup-and-login-header">
-  <%= link_to("Gyraph", "/", class: "gyraph-logo") %>
-  <div class="gyraph-sphere">
-    <%= image_tag("gyraph_sphere", width: "60", height: "60") %>
-  </div>
-  <h1 style="font-size: 24px;">ログイン</h1>
+<%= render 'shared/basic_header' %>
+<div class="flex flex-col text-center gap-5 p-10">
+  <h1 class="text-2xl font-semibold">ログイン</h1>
 </div>
 <div class="user-form-wrapper">
   <%= form_with url: login_path, local: true do |form| %>
