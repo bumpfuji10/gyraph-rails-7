@@ -1,11 +1,11 @@
 <%= render 'shared/basic_header' %>
 
-<div class="user-board-wrapper">
-  <div class="user-board">
+<div class="border-t">
+  <div class="">
 </div>
-  <div class="user-board-items">
-    <h1 class="user-board-items-name"><%= @user.name %></h1>
-    <p class="user-board-items-id"><%= extract_domain_from_email(@user.email) %></p>
+  <div class="">
+    <h1 class=""><%= @user.name %></h1>
+    <p class=""><%= extract_domain_from_email(@user.email) %></p>
   </div>
   <%= link_to("プロフィールを編集する", "#", class: "basic-btn", style: "color: white; font-size: 12px; padding: 0 6px;") %>
 <div>
