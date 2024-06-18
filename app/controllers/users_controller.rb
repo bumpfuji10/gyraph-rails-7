@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def redirect_if_logged_in
     if current_user
-      redirect_to user_path(current_user)
+      redirect_to(practice_records_path)
     end
   end
 end

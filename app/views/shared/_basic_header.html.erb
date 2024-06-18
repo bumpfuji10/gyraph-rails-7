@@ -3,7 +3,7 @@
     <div class="flex flex-1 items-center gap-x-3">
       <%= link_to("/", class: "flex gap-x-2 -m-1.5 p-1.5") do %>
         <%= image_tag("gyraph_sphere.png", class: "h-8 w-auto") %>
-        <div class="text-2xl font-semibold	">
+        <div class="text-2xl font-semibold">
           Gyraph
         </div>
       <% end %>
@@ -13,7 +13,7 @@
         <div class="hidden md:flex gap-x-12 md:items-center">
           <%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
           <%= link_to("いいねした日誌", "#", class: "text-sm font-semibold leading-6 text-gray-900") %>
-          <%= link_to("日誌を書く", "#", class: "text-sm font-semibold leading-6 text-gray-900") %>
+          <%= link_to("日誌を書く", new_practice_record_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
           <%= link_to('ログアウト', logout_path, data: { controller: 'logout', action: 'click->logout#logout' }, class: 'text-sm font-semibold leading-6 text-gray-900') %>
         </div>
         <%= render 'shared/header_toggle' %>

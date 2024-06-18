@@ -1,7 +1,19 @@
 <%= render 'shared/basic_header' %>
 
 <% @practice_records.each do |practice_record| %>
-  <%= practice_record.title %>
+  <%= link_to(practice_record_path(practice_record)) do %>
+    <div class="flex">
+      <div class="flex flex-1 flex-col bg-white mt-6 rounded-2xl justify-start">
+        <div class="flex items-center gap-4">
+          <h1 class="text-xl"><%= practice_record.title %></h1>
+          <p><%= practiced_date_format_ja(practice_record.practiced_date) %></p>
+        </div>
+        <% practice_record.practice_record_details.each do |detail| %>
+          <h3><%= "練習種目　#{detail.activity_title}" %></h3>
+          <h3><%= "練習内容詳細　#{detail.content}" %></h3>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
-
-<%= @current_user %>
+</div>
