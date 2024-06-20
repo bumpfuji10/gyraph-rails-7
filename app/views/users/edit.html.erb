@@ -1,0 +1,22 @@
+<%= render 'shared/basic_header' %>
+<div class="flex flex-col text-center gap-5 p-10">
+  <h1 class="text-2xl font-semibold">プロフィール変更</h1>
+</div>
+<div class="user-form-wrapper">
+  <%= form_with model: @user, local: true do |form| %>
+    <div class="signup-and-login-field-wrapper">
+      <label>名前</label>
+      <%= form.text_field :name, class: "signup-and-login-field" %>
+      <label>メールアドレス</label>
+      <%= form.text_field :email, class: "signup-and-login-field" %>
+      <label>パスワード</label>
+      <%= form.password_field :password, class: "signup-and-login-field" %>
+
+      <%= form.submit "新規登録", class: "basic-btn" %>
+    </div>
+  <% end %>
+</div>
+
+<p style="text-align: center; margin-top: 10px;">
+  すでにアカウントをお持ちの場合は<%= link_to("こちら", login_path, style: "color: rgb(113, 199, 235);") %>からログイン
+</p>
