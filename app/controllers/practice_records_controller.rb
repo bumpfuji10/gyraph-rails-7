@@ -10,16 +10,18 @@ class PracticeRecordsController < ApplicationController
   end
 
   def new
-    @practice_record = PracticeRecord.new
-    @practice_record.practice_record_details.build
+    @form = PracticeRecordForm.new(
+      practice_record_details_attributes: [{}]
+    )
   end
 
   def create
-    @practice_record = @user.practice_records.new(practice_record_params)
-    if @practice_record.save
+    @form = PracticeRecordForm.new(practice_record_form_params.merge(user: current_user))
+
+    if @form.save
       redirect_to(practice_records_path, notice: "練習記録を作成しました")
     else
-      render(:new, status: :unprocessable_entity)
+      render :new
     end
   end
 
@@ -29,11 +31,14 @@ class PracticeRecordsController < ApplicationController
     @user = current_user
   end
 
-  def practice_record_params
-    params.require(:practice_record).permit(
+  def practice_record_form_params
+    params.require(:practice_record_form).permit(
       :title,
       :practiced_date,
-      practice_record_details_attributes: [:id, :activity_title, :content, :_destroy]
+      practice_record_details_attributes: [
+        :activity_title,
+        :content
+      ]
     )
   end
 end
