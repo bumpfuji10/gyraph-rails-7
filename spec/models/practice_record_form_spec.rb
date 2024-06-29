@@ -6,7 +6,7 @@ RSpec.describe PracticeRecordForm, type: :model do
     {
       user: user,
       title: "本日の練習",
-      practiced_date: Date.today,
+      practiced_date: Date.today.to_s,
       practice_record_details_attributes: [
         { activity_title: "ゆか", content: "転倒1回" },
         { activity_title: "あん馬", content: "落下2回"}
@@ -21,6 +21,7 @@ RSpec.describe PracticeRecordForm, type: :model do
 
       context "titleがある場合" do
         it "practice_record_formが有効" do
+          pp practice_record_form.practiced_date
           expect(practice_record_form).to be_valid
         end
       end
@@ -78,7 +79,7 @@ RSpec.describe PracticeRecordForm, type: :model do
         {
           user: user,
           title: "本日の練習",
-          practiced_date: Date.today,
+          practiced_date: Date.today.to_s,
           practice_record_details_attributes: [
             { activity_title: "ゆか", content: "転倒1回" },
             { activity_title: "あん馬", content: "落下2回"}
