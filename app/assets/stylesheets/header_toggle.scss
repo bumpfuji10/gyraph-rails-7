@@ -1,5 +1,5 @@
 .setting-toggle {
-  position: relative; /* 親要素に相対位置を設定 */
+  position: relative;
 }
 
 .toggle-ul {
@@ -17,29 +17,21 @@
 }
 
 .toggle-list {
-  display: flex;
-  align-items: center;
-  padding: 10px;
+  display: block;
   font-size: 15px;
   color: #212529;
-  cursor: pointer;
 }
 
-.toggle-list:hover {
-  background-color: #f8f9fa;
-}
-
-.toggle-list a {
+.toggle-link {
+  display: block;
+  padding: 10px;
   text-decoration: none;
   color: inherit;
-}
-
-.toggle-list-icon {
-  margin-right: 5px;
-}
-
-.toggle-button {
   cursor: pointer;
+}
+
+.toggle-link:hover {
+  background-color: #f8f9fa;
 }
 
 .user-icon {

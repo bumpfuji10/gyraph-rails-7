@@ -2,17 +2,24 @@
   <%= image_tag 'user.svg', class: 'user-icon', data: { action: "click->toggle#toggle" } %>
   <ul class="toggle-ul hidden" data-toggle-target="menu">
     <li class="toggle-list">
-      <%= link_to "マイページ", user_path(current_user) %>
+      <%= link_to user_path(current_user), class: 'toggle-link' do %>
+        マイページ
+      <% end %>
     </li>
     <li class="toggle-list">
-      いいねした日誌
+      <%= link_to '#', class: 'toggle-link' do %>
+        いいねした日誌
+      <% end %>
     </li>
     <li class="toggle-list">
-      <%= link_to("日誌を書く", new_practice_record_path) %>
+      <%= link_to new_practice_record_path, class: 'toggle-link' do %>
+        日誌を書く
+      <% end %>
     </li>
-    <br>
     <li class="toggle-list">
-      <%= link_to 'ログアウト', logout_path, data: { controller: 'logout', action: 'click->logout#logout' }, class: 'logout-button' %>
+      <%= link_to logout_path, class: 'toggle-link logout-button', data: { controller: 'logout', action: 'click->logout#logout' } do %>
+        ログアウト
+      <% end %>
     </li>
   </ul>
 </div>
