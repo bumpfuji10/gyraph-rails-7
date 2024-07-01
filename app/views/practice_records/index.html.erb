@@ -8,7 +8,7 @@
           <h1 class="text-xl"><%= practice_record.title %></h1>
           <p><%= practiced_date_format_ja(practice_record.practiced_date) %></p>
         </div>
-        <% practice_record.practice_record_details.each do |detail| %>
+        <% practice_record.details.each do |detail| %>
           <h3><%= "練習種目　#{detail.activity_title}" %></h3>
           <h3><%= "練習内容詳細　#{detail.content}" %></h3>
         <% end %>
