@@ -6,3 +6,10 @@
   margin: 30px auto;
   word-break: break-all;
 }
+
+.empty_record_message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
