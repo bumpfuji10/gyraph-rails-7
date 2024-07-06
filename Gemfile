@@ -47,6 +47,8 @@ gem "sassc-rails"
 
 gem "tailwindcss-rails"
 
+gem "listen"
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -57,6 +59,7 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_bot_rails"
   gem "byebug"
+  gem "listen"
 end
 
 group :development do

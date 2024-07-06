@@ -5,4 +5,6 @@ class PracticeRecord < ApplicationRecord
 
   validates :title, presence: true, length: { maximum: 100 }
   validates :practiced_date, presence: true
+
+  alias_attribute :details, :practice_record_details
 end

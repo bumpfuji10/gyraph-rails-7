@@ -1,11 +1,10 @@
 <div class="grid gap-6 col-span-4 sm:col-span-9">
   <% current_user.practice_records.each do |record| %>
-    <% record.practice_record_details.each do |detail| %>
-    <div class="bg-white shadow rounded-lg p-6">
-      <%= practiced_date_format_ja(record.practiced_date) %>
-      <%= record.title %>
-      <%= detail.activity_title %>
-    </div>
+    <%= link_to practice_record_path(record) do %>
+      <div class="bg-white shadow rounded-lg p-6">
+        <%= practiced_date_format_ja(record.practiced_date) %>
+        <h1 class="text-xl font-semibold"><%= record.title %></h1>
+      </div>
     <% end %>
   <% end %>
 </div>
