@@ -1,29 +1,15 @@
 <%= render 'shared/basic_header' %>
 
 <div class="container mx-auto py-8 px-4">
+
   <div class="grid gap-6 col-span-4 sm:col-span-9">
-    <% @practice_records.each do |practice_record| %>
-
-      <div class="bg-white shadow rounded-lg p-6">
-        <%= link_to practice_record_path(practice_record) do %>
-
-          <div class="flex items-center">
-            <%= link_to "#{practice_record.user.name}", user_path(practice_record.user), class: "text-2xl font-black" %>
-            <p class="text-sm">
-              <%= extract_domain_from_email(practice_record.user.email) %>
-            </p>
-          </div>
-
-          <div class="flex items-center gap-4">
-            <%= practiced_date_format_ja(practice_record.practiced_date) %>
-            <h1 class="text-xl font-semibold">
-              <%= practice_record.title %>
-            </h1>
-          </div>
-
-        <% end %>
-      </div>
-
+    <% @practice_records.each do |record| %>
+      <%= link_to practice_record_path(record) do %>
+        <div class="bg-white shadow rounded-lg p-6">
+          <%= practiced_date_format_ja(record.practiced_date) %>
+          <h1 class="text-xl font-semibold"><%= record.title %></h1>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
