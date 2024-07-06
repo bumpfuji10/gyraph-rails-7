@@ -17,7 +17,6 @@ class PracticeRecordsController < ApplicationController
 
   def create
     @form = PracticeRecordForm.new(practice_record_form_params.merge(user: current_user))
-
     if @form.save
       redirect_to(practice_records_path, notice: "練習記録を作成しました")
     else
