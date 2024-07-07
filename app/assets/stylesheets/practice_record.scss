@@ -13,3 +13,43 @@
   justify-content: center;
   height: 80vh;
 }
+
+.fixed-header {
+  background-color: white;
+  height: 66px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fixed-header .button-container {
+  display: flex;
+  gap: 10px;
+}
+
+.fixed-button {
+  background-color: #71C7EB;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fixed-button:hover {
+  background-color: #9acde2;
+}
+
+.fixed-button.publish {
+  background-color: #71C7EB;
+}
+
+.fixed-button.publish:hover {
+  background-color: rgb(135, 183, 217);
+}
