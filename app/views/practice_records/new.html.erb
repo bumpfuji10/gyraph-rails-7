@@ -1,23 +1,41 @@
-<%= form_with(model: @form, scope: :practice_record_form, url: practice_records_path, local: true) do |form| %>
-  <header>
-    <div class="mt-4">
-      <%= form.submit '公開する', class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<div class="container mx-auto px-4">
+  <%= form_with(model: @form, scope: :practice_record_form, url: practice_records_path, local: true) do |form| %>
+
+    <div data-controller="form-field">
+      <%= render 'shared/record_publish_header', form: form %>
+
+      <div class="mt-24">
+        <%= form.label :title, "タイトル", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= form.text_field(:title, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
+
+        <%= form.label :practiced_date, "練習日", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= form.date_field(:practiced_date, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus.border-blue-500") %>
+      </div>
+
+      <div data-form-field-target="fieldsContainer">
+        <% @form.practice_record_details_attributes.each_with_index do |details, index| %>
+          <%= form.fields_for "practice_record_details_attributes[#{index}]", details do |details_form| %>
+            <%= details_form.label :activity_title, "練習内容", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= details_form.text_field(:activity_title, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus.border-blue-500") %>
+
+            <%= details_form.label :content, "詳細", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
+            <%= details_form.text_area(:content, rows: "5", class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus.border-blue-500") %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-  </header>
-
-  <%= form.label :title, "タイトル", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
-  <%= form.text_field(:title, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
-
-  <%= form.label :practiced_date, "練習日", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
-  <%= form.date_field(:practiced_date, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
-
-  <% @form.practice_record_details_attributes.each_with_index do |details, index| %>
-    <%= form.fields_for "practice_record_details_attributes[#{index}]", details do |details_form| %>
-      <%= details_form.label :activity_title, "練習内容", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
-      <%= details_form.text_field(:activity_title, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
-
-      <%= details_form.label :content, "詳細", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
-      <%= details_form.text_area(:content, rows: "5", class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
-    <% end %>
   <% end %>
-<% end %>
+
+  <template id="practice-record-details-template">
+    <div class="nested-fields mt-12">
+      <div data-action="click->form-field#removeAppendedForm" class="basic-btn">
+        このフィールドを削除する
+      </div>
+      <label class="block mt-2 text-sm font-medium text-gray-900 dark:text-white">練習内容</label>
+      <input type="text" name="practice_record_form[practice_record_details_attributes][NEW_FORM][activity_title]" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+      <label class="block mt-2 text-sm font-medium text-gray-900 dark:text-white">詳細</label>
+      <textarea name="practice_record_form[practice_record_details_attributes][NEW_FORM][content]" rows="5" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus.border-blue-500"></textarea>
+    </div>
+  </template>
+</div>
