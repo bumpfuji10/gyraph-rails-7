@@ -1,6 +1,6 @@
 <div class="container mx-auto px-4">
   <%= form_with(model: @form, scope: :practice_record_form, url: practice_records_path, local: true) do |form| %>
-    <!-- ヘッダーとボタンのパーシャルを呼び出し、form オブジェクトを渡す -->
+
     <div data-controller="form-field">
       <%= render 'shared/record_publish_header', form: form %>
 
@@ -26,7 +26,6 @@
     </div>
   <% end %>
 
-  <!-- フィールドのテンプレート -->
   <template id="practice-record-details-template">
     <div class="nested-fields mt-12">
       <div data-action="click->form-field#removeAppendedForm" class="basic-btn">
