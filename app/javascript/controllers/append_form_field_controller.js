@@ -23,4 +23,12 @@ export default class extends Controller {
     });
     return this.fieldsContainerTarget.appendChild(template);
   }
+
+  removeAppendedForm(event) {
+    event.preventDefault();
+    const fieldSet = event.target.closest('.nested-fields');
+    if (fieldSet) {
+      fieldSet.remove();
+    }
+  }
 }
