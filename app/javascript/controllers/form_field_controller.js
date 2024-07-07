@@ -11,12 +11,10 @@ export default class extends Controller {
     this.replaceNewFormIndex(template, newIndex)
   }
 
-  // フォームテンプレートを複製
   cloneDetailFormTemplate() {
     return document.getElementById('practice-record-details-template').content.cloneNode(true);
   }
 
-  // フォームテンプレートをDOMに追加
   replaceNewFormIndex(template, newIndex) {
     template.querySelectorAll("input, textarea").forEach(input => {
       input.name = input.name.replace(/NEW_FORM/g, newIndex);
