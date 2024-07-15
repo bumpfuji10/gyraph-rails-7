@@ -1,22 +1,18 @@
 <%= render 'shared/basic_header' %>
-<div class="flex flex-col text-center gap-5 p-10">
+<div style="">
   <h1 class="text-2xl font-semibold">プロフィール変更</h1>
-</div>
-<div class="user-form-wrapper">
-  <%= form_with model: @user, local: true do |form| %>
-    <div class="signup-and-login-field-wrapper">
-      <label>名前</label>
-      <%= form.text_field :name, class: "signup-and-login-field" %>
-      <label>メールアドレス</label>
-      <%= form.text_field :email, class: "signup-and-login-field" %>
-      <label>パスワード</label>
-      <%= form.password_field :password, class: "signup-and-login-field" %>
-
-      <%= form.submit "新規登録", class: "basic-btn" %>
+  <div class="profile-wrapper">
+    <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+    <div class="">
+      <%= form_with model: @user, method: :patch, local: true do |form| %>
+        <div style="display: grid;">
+          <label>名前</label>
+          <%= form.text_field :name, value: @user.name %>
+          <label>自己紹介</label>
+          <%= form.text_area :profile, value: @user.profile %>
+          <%= form.submit "この内容で保存する", class: "basic-btn" %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
-
-<p style="text-align: center; margin-top: 10px;">
-  すでにアカウントをお持ちの場合は<%= link_to("こちら", login_path, style: "color: rgb(113, 199, 235);") %>からログイン
-</p>
