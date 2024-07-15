@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :practice_records
+  has_one_attached :icon do |attachable|
+    attachable.variant :thumb, resize_to_limit: [100, 100]
+  end
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

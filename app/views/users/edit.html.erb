@@ -2,14 +2,19 @@
 <div style="">
   <h1 class="text-2xl font-semibold">プロフィール変更</h1>
   <div class="profile-wrapper">
-    <img src="https://randomuser.me/api/portraits/men/94.jpg" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
+    <%= image_tag @user.icon.variant(:thumb) if @user.icon.attached? %>
     <div class="">
       <%= form_with model: @user, method: :patch, local: true do |form| %>
         <div style="display: grid;">
+          <label>アイコン</label>
+          <%= form.file_field :icon %>
+
           <label>名前</label>
           <%= form.text_field :name, value: @user.name %>
+
           <label>自己紹介</label>
           <%= form.text_area :profile, value: @user.profile %>
+
           <%= form.submit "この内容で保存する", class: "basic-btn" %>
         </div>
       <% end %>
