@@ -26,10 +26,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by(id: params[:id])
+    @user.update(user_params)
+    if @user.save
+      redirect_to(user_path(@user))
+    else
+      render(:edit, status: :unprocessable_entity)
+    end
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password)
+    params.require(:user).permit(:name, :email, :password, :profile, :icon)
   end
 
   def redirect_if_logged_in
