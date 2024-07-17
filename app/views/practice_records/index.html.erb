@@ -9,8 +9,9 @@
         <%= link_to practice_record_path(record) do %>
           <div class="bg-white shadow rounded-lg p-6">
 
-          <div class="grid gap-4">
+          <div class="grid gap-2">
             <div class="flex items-center gap-x-2">
+              <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if @user.icon.attached? %>
               <strong><%= record.user.name %></strong>
               <p class="text-sm"><%= extract_domain_from_email(record.user.email) %></p>
             </div>
