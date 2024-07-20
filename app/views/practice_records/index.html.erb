@@ -6,21 +6,25 @@
   <div class="container mx-auto py-8 px-4">
     <div class="grid gap-6 col-span-4 sm:col-span-9">
       <% @practice_records.each do |record| %>
-        <%= link_to practice_record_path(record) do %>
-          <div class="bg-white shadow rounded-lg p-6">
-
+        <div class="bg-white shadow rounded-lg p-6">
           <div class="grid gap-2">
             <div class="flex items-center gap-x-2">
-              <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if @user.icon.attached? %>
-              <strong><%= record.user.name %></strong>
+              <%= link_to user_path(record.user) do %>
+                <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if @user.icon.attached? %>
+              <% end %>
+              <%= link_to user_path(record.user) do %>
+                <strong><%= record.user.name %></strong>
+              <% end %>
               <p class="text-sm"><%= extract_domain_from_email(record.user.email) %></p>
             </div>
-
+            <%= link_to practice_record_path(record) do %>
               <%= practiced_date_format_ja(record.practiced_date) %>
-              <div class="text-2xl font-bold"><%= record.title %></div>
-            </div>
+              <div class="text-2xl font-bold">
+                <%= record.title %>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
   </div>
