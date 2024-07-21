@@ -3,7 +3,7 @@
   <h1 class="text-2xl font-semibold">プロフィール設定</h1>
 </div>
 <div class="profile-wrapper">
-  <%= image_tag @user.icon.variant(:large), class: "bg-gray-300 rounded-full" if @user.icon.attached? %>
+  <%= image_tag current_user.icon.variant(:large), class: "bg-gray-300 rounded-full" if @user.icon.attached? %>
   <div class="">
     <%= form_with model: @user, method: :patch, local: true do |form| %>
       <div class="grid gap-1">
