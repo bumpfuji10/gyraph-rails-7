@@ -10,7 +10,7 @@
           <div class="grid gap-2">
             <div class="flex items-center gap-x-2">
               <%= link_to user_path(record.user) do %>
-                <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if @user.icon.attached? %>
+                <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if current_user.icon.attached? %>
               <% end %>
               <%= link_to user_path(record.user) do %>
                 <strong><%= record.user.name %></strong>
@@ -19,7 +19,7 @@
             </div>
             <%= link_to practice_record_path(record) do %>
               <%= practiced_date_format_ja(record.practiced_date) %>
-              <div class="text-2xl font-bold">
+              <div class="text-xl font-bold">
                 <%= record.title %>
               </div>
             <% end %>

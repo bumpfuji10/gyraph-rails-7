@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "users#new"
+  root "pages#home"
   get "/signup", to: "users#new"
   resources :users, only: [:new, :create, :show, :index, :edit, :update]
   resources :practice_records

@@ -3,7 +3,7 @@
 <div class="container practice-record-wrapper p-10">
 
   <%= @practice_record.practiced_date %>
-  <h1 class="text-2xl font-bold mb-4"><%= @practice_record.title %></h1>
+  <h1 class="text-xl font-bold mb-4"><%= @practice_record.title %></h1>
   <% @practice_record.details.each do |detail| %>
     <h2 class="text-xl font-bold"><%= detail.activity_title %></h2>
     <%= format_with_line_breaks(detail.content) %>
