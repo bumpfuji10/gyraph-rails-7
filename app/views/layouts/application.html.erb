@@ -6,12 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
+    <div data-controller="sidebar">
+      <%= render "shared/basic_header" %>
+      <div class="hidden sidebar" data-sidebar-target="side">
+        <div class="p-4">
+          <ul class="mt-4">
+            <li><%= link_to("日誌を書く", new_practice_record_path, class: "text-sm font-semibold leading-6 text-gray-900") %></li>
+            <li><%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %></li>
+            <li><%= link_to("ログアウト", logout_path, class: "text-sm font-semibold leading-6 text-gray-900", data: { controller: 'logout', action: 'click->logout#logout' }) %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="basic-background">
       <%= yield %>
     </div>
