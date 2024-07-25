@@ -1,9 +1,7 @@
 <header class="bg-white">
   <nav class="mx-auto flex max-w-7xl justify-normal p-2 px-6" aria-label="Global">
     <div class="flex flex-1 items-center gap-x-3">
-      <% if current_user %>
-        <%= image_tag("hamberger.svg", class: "block md:hidden h-8 w-auto") %>
-      <% end%>
+      <%= image_tag "hamberger.svg", data: { action: "click->sidebar#toggle" }, class: "h-8 w-auto cursor-pointer" %>
       <%= link_to("/", class: "flex gap-x-2 -m-1.5 p-1.5") do %>
         <%= image_tag("gyraph_sphere.png", class: "h-8 w-auto") %>
         <div class="text-xl font-semibold">
