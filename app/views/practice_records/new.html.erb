@@ -4,13 +4,11 @@
     <div data-controller="form-field">
       <%= render 'shared/record_publish_header', form: form %>
 
-      <div class="mt-24">
-        <%= form.label :title, "タイトル", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= form.text_field(:title, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
+      <%= form.label :title, "タイトル", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.text_field(:title, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500") %>
 
-        <%= form.label :practiced_date, "練習日", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
-        <%= form.date_field(:practiced_date, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus.border-blue-500") %>
-      </div>
+      <%= form.label :practiced_date, "練習日", class: "block mt-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.date_field(:practiced_date, class: "block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus.border-blue-500") %>
 
       <div data-form-field-target="fieldsContainer">
         <% @form.practice_record_details_attributes.each_with_index do |details, index| %>
