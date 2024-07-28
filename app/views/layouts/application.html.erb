@@ -13,19 +13,23 @@
   <body>
     <div data-controller="sidebar">
       <%= render "shared/basic_header" %>
-      <div class="hidden sidebar" data-sidebar-target="side">
-        <div class="p-4">
-          <ul class="mt-4">
-            <li><%= link_to("日誌を書く", new_practice_record_path, class: "text-sm font-semibold leading-6 text-gray-900") %></li>
-            <li><%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %></li>
-            <li><%= link_to("ログアウト", logout_path, class: "text-sm font-semibold leading-6 text-gray-900", data: { controller: 'logout', action: 'click->logout#logout' }) %></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      <div class="menu-icon" id="menuIcon" data-action="click->sidebar#toggle">☰</div>
+      <div class="overlay" id="overlay" data-action="click->sidebar#toggle"></div>
+      <div class="sidebar" id="sidebar" data-target="sidebar.side">
 
-    <div class="basic-background">
-      <%= yield %>
+      <div class="sidebar-link-items">
+        <ul>
+          <li><%= link_to("日誌を書く", new_practice_record_path, class: "text-sm font-semibold leading-6 text-gray-900") %></li>
+          <li><%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %></li>
+          <li><%= link_to("ログアウト", logout_path, class: "text-sm font-semibold leading-6 text-gray-900", data: { controller: 'logout', action: 'click->logout#logout' }) %></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="content" id="content">
+      <div class="basic-background">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

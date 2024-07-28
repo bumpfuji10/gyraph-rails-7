@@ -1,11 +1,22 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="sidebar"
 export default class extends Controller {
-
   static targets = ["side"];
 
   toggle() {
-    this.sideTarget.classList.toggle("hidden");
+    const menuIcon = document.getElementById("menu-icon");
+    const sidebar = this.sideTarget;
+    const overlay = document.getElementById("overlay");
+
+    sidebar.classList.toggle('open');
+    menuIcon.classList.toggle('open');
+    overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+
+    console.log(sidebar.classList.contains('open'))
+    if (sidebar.classList.contains('open')) {
+      menuIcon.innerHTML = '✕';
+    } else {
+      menuIcon.innerHTML = '☰';
+    }
   }
 }
