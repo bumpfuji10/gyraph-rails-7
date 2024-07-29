@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :redirect_if_logged_in, only: [:new]
-  skip_before_action :redirect_if_logged_in, only: [:destroy]
+  skip_before_action :redirect_if_logged_in, only: [:new, :destroy]
   helper_method :current_user
 
   def current_user
@@ -18,9 +18,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def new
-
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:email])

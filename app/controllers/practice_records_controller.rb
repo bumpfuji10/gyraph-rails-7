@@ -1,8 +1,8 @@
 class PracticeRecordsController < ApplicationController
-  before_action :set_user
+  before_action :redirect_if_logged_in
 
   def index
-    @practice_records = PracticeRecord.all
+    @practice_records = PracticeRecord.all.order(id: :desc)
   end
 
   def show
@@ -26,9 +26,9 @@ class PracticeRecordsController < ApplicationController
 
   private
 
-  def set_user
-    @user = current_user
-  end
+  # def set_user
+  #   @user = current_user
+  # end
 
   def practice_record_form_params
     params.require(:practice_record_form).permit(
