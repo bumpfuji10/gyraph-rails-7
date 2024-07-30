@@ -18,9 +18,13 @@ class PracticeRecordsController < ApplicationController
   def create
     @form = PracticeRecordForm.new(practice_record_form_params.merge(user: current_user))
     if @form.save
-      redirect_to(practice_records_path, notice: "練習記録を作成しました")
+      flash[:success] = "#{@form.practiced_date.strftime("%Y年%m月%d日")}の練習日誌を公開しました"
+      redirect_to(practice_records_path)
     else
-      render :new
+      flash.now[:alert] = "練習日誌の公開に失敗しました"
+      flash.now[:alert_detail] = @form.errors.full_messages.join("\n")
+      pp flash
+      render :new, status: :unprocessable_entity
     end
   end
 
