@@ -21,7 +21,6 @@ RSpec.describe PracticeRecordForm, type: :model do
 
       context "titleがある場合" do
         it "practice_record_formが有効" do
-          pp practice_record_form.practiced_date
           expect(practice_record_form).to be_valid
         end
       end

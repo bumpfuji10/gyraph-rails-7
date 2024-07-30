@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   before_action :redirect_if_logged_in, only: [:new]
-  skip_before_action :redirect_if_logged_in, only: [:destroy]
+  skip_before_action :redirect_if_logged_in, only: [:new, :destroy]
   helper_method :current_user
 
   def current_user
@@ -18,23 +18,24 @@ class SessionsController < ApplicationController
     end
   end
 
-  def new
-
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:email])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to(practice_records_path, notice: "ログインしました")
+      flash[:success] = "ログインしました"
+      redirect_to(practice_records_path)
     else
-      flash.now[:alert] = "メールアドレスまたはパスワードが間違っています"
+      flash.now[:alert] = "ログインできませんでした"
+      flash.now[:alert_detail] = "メールアドレスまたはパスワードが間違っています"
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to login_path, notice: "ログアウトしました"
+    redirect_to login_path
+    flash[:success] = "ログアウトしました"
   end
 end

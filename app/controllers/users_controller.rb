@@ -30,8 +30,11 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.update(user_params)
     if @user.save
+      flash[:success] = "プロフィールを更新しました"
       redirect_to(user_path(@user))
     else
+      flash.now[:alert] = "プロフィールを更新できませんでした"
+      flash.now[:alert_detail] = @user.errors.full_messages.join("\n")
       render(:edit, status: :unprocessable_entity)
     end
   end

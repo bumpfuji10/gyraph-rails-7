@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_logged_in
-    redirect_to root_path if current_user
+    if !current_user
+      flash[:alert] = "ログインしてください"
+      redirect_to root_path
+    end
   end
 end

@@ -1,13 +1,10 @@
-<%= render 'shared/basic_header' %>
-
 <div class="flex justify-center">
-  <div class="grid">
-    <h1 class="text-xl font-bold text-left">
-      日々の練習内容を記録し、<br>友達と共有しよう
-    </h1>
-    <p class="text-center">Gyraphは、体操選手の日々の練習を記録することができます。<br>そして、友達と練習した内容を共有することができます。</p>
-  </div>
-  <%= image_tag("demo_buzz_base.png", style: "width: 300px;") %>
+  <% if flash[:alert] %>
+    <div class="flex items-center h-12 bg-red-100 border border-red-400 text-red-700 px-4 rounded relative text-center mb-10 mx-auto max-w-md md:max-w-lg lg:max-w-xl" role="alert">
+      <strong class="font-bold block">ログインしてください</strong>
+    </div>
+  <% end %>
+  <h1>まだ実装されてません</h1>
 </div>
 
 

@@ -1,10 +1,10 @@
-<%= render 'shared/basic_header' %>
 <div class="flex flex-col text-center gap-5 p-10">
   <h1 class="text-xl font-semibold">ログイン</h1>
 </div>
 <div class="user-form-wrapper">
   <%= form_with url: login_path, local: true do |form| %>
     <div class="signup-and-login-field-wrapper">
+
       <label>メールアドレス</label>
       <%= form.text_field :email, class: "signup-and-login-field", autocomplete: "email", autocorrect: "off", autocapitalize: "none" %>
       <label>パスワード</label>
@@ -14,10 +14,6 @@
     </div>
   <% end %>
 </div>
-
-<% if flash[:alert] %>
-  <p style="color: red;"><%= flash[:alert] %></p>
-<% end %>
 
 <p style="text-align: center; margin-top: 10px;">
   <%= link_to("会員登録はこちら", new_user_path, style: "color: rgb(113, 199, 235);") %>
