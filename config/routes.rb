@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   root "pages#home"
   get "/signup", to: "users#new"
   resources :users, only: [:new, :create, :show, :index, :edit, :update]
