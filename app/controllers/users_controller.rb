@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    UserMailer.confirm(@user).deliver_now
     if @user.save
       redirect_to(practice_records_path)
     else
