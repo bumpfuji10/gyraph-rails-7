@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @user.name %>様、Gyraphへようこそ。</h1>
+    <p>
+      Gyraphへのご登録ありがとうございます。以下の情報で新規登録が完了しました。<br>
+      ユーザー名は「<%= @user.name %>」です。<br>
+    </p>
+    <p>
+      お手数ですが、再度<p><a href="<%= @url %>">こちら</a>からログインを行ってください。</p>
+    </p>
+    <p>本サイトにユーザー登録いただきありがとうございます。</p>
+  </body>
+</html>
