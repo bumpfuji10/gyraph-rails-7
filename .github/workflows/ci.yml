@@ -1,12 +1,10 @@
-GitHub Actions CI Workflow
-
 name: Rails CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -14,10 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.2
+        ruby-version: '3.0.2'
         bundler-cache: true
 
     - name: Install dependencies
