@@ -1,5 +1,5 @@
 ja:
-  activemodel:
+  activerecord:
     models:
       user: ユーザー
       practice_record: 練習日誌
@@ -21,14 +21,3 @@ ja:
       blank: "を入力してください"
       taken: "は既に存在します"
       invalid: "は無効です"
-    format:
-      attributes:
-        user:
-          name: "名前"
-          email: "メールアドレス"
-        practice_record:
-          title: "タイトル"
-          practiced_date: "練習日"
-        practice_record_detail:
-          activity_title: "練習内容"
-          content: "詳細"
