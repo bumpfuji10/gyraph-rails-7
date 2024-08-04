@@ -9,6 +9,7 @@ export default class extends Controller {
     const template = this.cloneDetailFormTemplate()
     const newIndex = new Date().getTime().toString();
     this.replaceNewFormIndex(template, newIndex)
+    this.fieldsContainerTarget.appendChild(template);
   }
 
   cloneDetailFormTemplate() {
@@ -19,7 +20,6 @@ export default class extends Controller {
     template.querySelectorAll("input, textarea").forEach(input => {
       input.name = input.name.replace(/NEW_FORM/g, newIndex);
     });
-    return this.fieldsContainerTarget.appendChild(template);
   }
 
   removeAppendedForm(event) {

@@ -1,22 +1,39 @@
 ja:
-  activemodel:
+  activerecord:
     models:
       user: ユーザー
-      practice_record_form: 練習日誌フォーム
+      practice_record: 練習日誌
+      practice_record_detail: 練習日誌詳細
     attributes:
       user:
         name: 名前
         email: メールアドレス
         password_digest: パスワード
-      practice_record_form:
+      practice_record:
         title: タイトル
         practiced_date: 練習日
-        practice_record_details_attributes: 練習日誌の詳細
+        practice_record_details: 練習日誌詳細  # この行を追加
+      practice_record/practice_record_details:
+        activity_title: 練習内容
+        content: 詳細
+    errors:
+      models:
+        practice_record:
+          attributes:
+            title:
+              blank: "を入力してください"
+            practiced_date:
+              blank: "を入力してください"
+        practice_record_detail:
+          attributes:
+            activity_title:
+              blank: "を入力してください"
+            content:
+              blank: "を入力してください"
 
   errors:
     format: "%{attribute}%{message}"
     messages:
       blank: "を入力してください"
-      invalid: "は不正な値です"
-      too_short: "は%{count}文字以上で入力してください"
-      taken: "は既に使用されています"
+      taken: "はすでに存在します"
+      invalid: "は無効です"
