@@ -12,12 +12,28 @@ ja:
       practice_record:
         title: タイトル
         practiced_date: 練習日
-      practice_record_detail:
+      "practice_record/practice_record_detail":
         activity_title: 練習内容
         content: 詳細
 
+    errors:
+      models:
+        practice_record:
+          attributes:
+            title:
+              blank: "を入力してください"
+            practiced_date:
+              blank: "を入力してください"
+        practice_record_detail:
+          attributes:
+            activity_title:
+              blank: "を入力してください"
+            content:
+              blank: "を入力してください"
+
   errors:
+    format: "%{attribute}%{message}"
     messages:
       blank: "を入力してください"
-      taken: "は既に存在します"
+      taken: "はすでに存在します"
       invalid: "は無効です"
