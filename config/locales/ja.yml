@@ -12,10 +12,10 @@ ja:
       practice_record:
         title: タイトル
         practiced_date: 練習日
-      "practice_record/practice_record_detail":
+        practice_record_details: 練習日誌詳細  # この行を追加
+      practice_record/practice_record_details:
         activity_title: 練習内容
         content: 詳細
-
     errors:
       models:
         practice_record:
