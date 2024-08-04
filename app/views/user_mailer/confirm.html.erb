@@ -10,7 +10,7 @@
       ユーザー名は「<%= @user.name %>」です。<br>
     </p>
     <p>
-      お手数ですが、再度<p><a href="<%= @url %>">こちら</a>からログインを行ってください。</p>
+      お手数ですが、再度<%= link_to 'こちら', account_confirmation_url(@user.confirmation_token) %>からログインを行ってください。
     </p>
     <p>本サイトにユーザー登録いただきありがとうございます。</p>
   </body>
