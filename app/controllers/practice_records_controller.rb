@@ -1,5 +1,4 @@
 class PracticeRecordsController < ApplicationController
-  before_action :redirect_if_logged_in
 
   def index
     @practice_records = PracticeRecord.all.order(id: :desc)
