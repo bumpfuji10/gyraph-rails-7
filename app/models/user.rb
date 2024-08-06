@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   has_secure_password
 
-  generates_token_for :confirm_account, expires_in: 24.hours
+  generates_token_for :confirm_account, expires_in: 1.minutes
 
   def generate_confirmation_instructions
     self.confirmation_token = generate_token_for(:confirm_account)
@@ -30,5 +30,9 @@ class User < ApplicationRecord
 
   def confirmed?
     confirmed_at.present?
+  end
+
+  def expired?
+    confirmation_sent_at < 1.hours.ago
   end
 end
