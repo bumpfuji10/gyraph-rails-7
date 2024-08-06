@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.confirm(@user).deliver_now
       redirect_to(login_path)
-      flash[:success] = "アカウントの仮登録が完了しました。メールを確認してアカウントを有効化してください。"
+      flash[:success] = "アカウントの仮登録が完了しました。メールを確認してアカウントを有効化してください"
     else
       render(:new, status: :unprocessable_entity)
     end
