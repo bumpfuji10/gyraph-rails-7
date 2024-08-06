@@ -20,23 +20,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.confirm(@user).deliver_now
+      UserMailer.account_activation(@user).deliver_now
       redirect_to(login_path)
       flash[:success] = "アカウントの仮登録が完了しました。メールを確認してアカウントを有効化してください"
     else
       render(:new, status: :unprocessable_entity)
-    end
-  end
-
-  def confirm
-    user = User.find_by(confirmation_token: params[:token])
-    if user.present? &&  user.confirmation_sent_at > 24.hours.ago
-      user.confirm
-      redirect_to(login_path)
-      flash[:success] = "アカウントを有効化しました。お手数ですが、再度ログインしてください。"
-    else
-      render(:new, status: :unprocessable_entity)
-      flash.now[:alert] = "アカウントの有効化に失敗しました"
     end
   end
 

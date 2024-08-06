@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root "pages#home"
   get "/signup", to: "users#new"
   resources :users, only: [:new, :create, :show, :index, :edit, :update]
-  get "/account_confirmation/:token", to: "users#confirm", as: "account_confirmation"
+  get "/account_activations/:token", to: "account_activations#edit", as: "account_activation"
   resources :practice_records
 
   get "login", to: "sessions#new"
