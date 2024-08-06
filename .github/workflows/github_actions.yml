@@ -7,7 +7,7 @@ on:
     branches: [develop]
 
 jobs:
-  test:
+  development_ci:
     runs-on: ubuntu-latest
 
     steps:
