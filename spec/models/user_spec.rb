@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  include ActiveSupport::Testing::TimeHelpers
+
   describe "validates" do
     context "name" do
       let(:user_has_name) { FactoryBot.build(:user, name: "test user", email: "test@test.com") }
@@ -56,5 +58,88 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "password" do
+
+      context "passwordがある場合" do
+        let(:user_has_password) { FactoryBot.build(:user, name: "test user", email: "test@test.com", password: "password") }
+
+        it "userの作成に成功" do
+          expect(user_has_password.save).to eq true
+        end
+
+        it "userが有効" do
+          expect(user_has_password).to be_valid
+        end
+      end
+
+      context "passwordが無い場合" do
+        let(:user_has_not_password) { FactoryBot.build(:user, name: "test user", email: "test@test.com", password: nil) }
+
+        it "userの作成に失敗" do
+          expect(user_has_not_password.save).to eq false
+        end
+
+        it "userが無効" do
+          expect(user_has_not_password).to be_invalid
+        end
+      end
+    end
+  end
+
+  describe "methods" do
+
+    context "generate_confirmation_instructions" do
+      let(:user) { FactoryBot.create(:user) }
+      before { freeze_time }
+
+      it "confirmation_tokenが生成される" do
+        expect(user.confirmation_token).to be_present
+      end
+
+      it "confirmation_sent_atが現在時刻で記録される" do
+        expect(user.confirmation_sent_at).to be_present
+        expect(user.confirmation_sent_at).to eq Time.current
+      end
+    end
+
+    context "confirm" do
+      let(:already_sent_account_activation_mail_user) do
+        user = FactoryBot.create(:user)
+      end
+      before { freeze_time }
+
+      it "userのconfirmed_atが現在時刻で記録される" do
+        already_sent_account_activation_mail_user.confirm
+        expect(already_sent_account_activation_mail_user.confirmed_at).to eq Time.current
+      end
+
+      it "userのconirmatin_tokenがnilになる" do
+        already_sent_account_activation_mail_user.confirm
+        expect(already_sent_account_activation_mail_user.confirmation_token).to be_nil
+      end
+    end
+
+    context "confirmed?" do
+      let(:already_sent_account_activation_mail_user) do
+        user = FactoryBot.create(:user)
+        user.confirm
+        user
+      end
+
+      context "confirmed_atがある場合" do
+
+        it "return true" do
+          expect(already_sent_account_activation_mail_user.confirmed?).to eq true
+        end
+      end
+
+      context "confirmed_atが無い場合" do
+        before { already_sent_account_activation_mail_user.confirmed_at = nil }
+
+        it "return false" do
+          expect(already_sent_account_activation_mail_user.confirmed?).to eq false
+        end
+      end
+    end
   end
 end
