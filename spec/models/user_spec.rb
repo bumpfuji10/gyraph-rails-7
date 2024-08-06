@@ -56,5 +56,31 @@ RSpec.describe User, type: :model do
       end
     end
 
+    context "password" do
+
+      context "passwordがある場合" do
+        let(:user_has_password) { FactoryBot.build(:user, name: "test user", email: "test@test.com", password: "password") }
+
+        it "userの作成に成功" do
+          expect(user_has_password.save).to eq true
+        end
+
+        it "userが有効" do
+          expect(user_has_password).to be_valid
+        end
+      end
+
+      context "passwordが無い場合" do
+        let(:user_has_not_password) { FactoryBot.build(:user, name: "test user", email: "test@test.com", password: nil) }
+
+        it "userの作成に失敗" do
+          expect(user_has_not_password.save).to eq false
+        end
+
+        it "userが無効" do
+          expect(user_has_not_password).to be_invalid
+        end
+      end
+    end
   end
 end
