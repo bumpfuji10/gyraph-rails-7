@@ -31,6 +31,9 @@ jobs:
         bundle exec rake db:create
         bundle exec rake db:schema:load
 
+    - name: Clear Rails cache
+      run: rm -rf tmp/cache/assets
+
     - name: Precompile assets
       env:
         RAILS_ENV: test
