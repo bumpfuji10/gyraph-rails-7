@@ -83,4 +83,42 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "generate_confirmation_instructions" do
+
+    it "confirmation_tokenが生成される" do
+
+    end
+    it "confirmation_sent_atが現在時刻で記録される" do
+
+    end
+  end
+
+  describe "confirm" do
+
+    it "userのconfirmed_atが現在時刻で記録される" do
+
+    end
+
+    it "userのconirmatin_tokenがnilになる" do
+
+    end
+  end
+
+  describe "confirmed?" do
+
+    context "confirmed_atがある場合" do
+
+      it "return true" do
+
+      end
+    end
+
+    context "confirmed_atが無い場合" do
+
+      it "return false" do
+
+      end
+    end
+  end
 end
