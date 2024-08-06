@@ -39,6 +39,9 @@ jobs:
         RAILS_ENV: test
       run: bundle exec rake assets:precompile
 
+    - name: Run Brakeman
+      run: bundle exec brakeman
+
     - name: Run tests
       env:
         RAILS_ENV: test
