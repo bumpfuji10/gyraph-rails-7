@@ -141,5 +141,26 @@ RSpec.describe User, type: :model do
         end
       end
     end
+
+    context "expired?" do
+      before { freeze_time }
+      let!(:user) { user = FactoryBot.create(:user) }
+
+      context "userのconfirmation_sent_atが現在時刻から1時間以上前の場合" do
+        before { travel 61.minutes }
+
+        it "return true" do
+          expect(user.expired?).to eq true
+        end
+      end
+
+      context "userのconfirmation_sent_atが1時間前でない場合" do
+        before { travel 59.minutes }
+
+        it "return false" do
+          expect(user.expired?).to eq false
+        end
+      end
+    end
   end
 end
