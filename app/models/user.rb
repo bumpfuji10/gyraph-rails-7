@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_create :generate_confirmation_instructions
 
   has_many :practice_records
+  has_many :user_password_resets, dependent: :destroy
   has_one_attached :icon do |attachable|
     attachable.variant :large, resize_to_limit: [100, 100]
     attachable.variant :medium, resize_to_limit: [50, 50]
