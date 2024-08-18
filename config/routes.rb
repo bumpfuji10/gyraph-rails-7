@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get "/account_activations/:token", to: "account_activations#edit", as: "account_activation"
   resources :practice_records
 
+  get "password/forgot", to: "user_password_resets#new"
+  post "password/forgot", to: "user_password_resets#create"
+  get "password/reset/:token", to: "user_password_resets#edit", as: "password_reset"
+  patch "password/reset/:token", to: "user_password_resets#update"
+
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   get "logout", to: "sessions#destroy"
