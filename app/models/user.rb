@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :practice_records
   has_many :user_password_resets, dependent: :destroy
+  alias_attribute :password_resets, :user_password_resets
   has_one_attached :icon do |attachable|
     attachable.variant :large, resize_to_limit: [100, 100]
     attachable.variant :medium, resize_to_limit: [50, 50]
