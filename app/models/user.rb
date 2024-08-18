@@ -18,7 +18,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   has_secure_password
 
-  generates_token_for :confirm_account, expires_in: 1.minutes
+  generates_token_for :confirm_account, expires_in: 60.minutes
 
   def generate_confirmation_instructions
     self.confirmation_token = generate_token_for(:confirm_account)
