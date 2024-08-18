@@ -1,0 +1,16 @@
+<div class="flex flex-col text-center gap-5 p-10">
+  <h1 class="text-xl font-semibold">パスワードを再設定します</h1>
+  <p>Gyraphで<%= @user.name %>様が利用する新しいパスワードを以下から入力してください。</p>
+</div>
+<div class="user-form-wrapper">
+  <%= form_with url: password_reset_path(@password_reset_instance.reset_password_token), method: :patch, local: true do |form| %>
+    <div class="signup-and-login-field-wrapper">
+
+      <label>新しいパスワード</label>
+      <%= form.text_field :password, class: "signup-and-login-field", autocomplete: "email", autocorrect: "off", autocapitalize: "none" %>
+
+      <%= form.submit "このパスワードで再設定する", class: "basic-btn" %>
+    </div>
+  <% end %>
+</div>
+

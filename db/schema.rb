@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_150143) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_17_092437) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -58,6 +58,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_150143) do
     t.index ["user_id"], name: "index_practice_records_on_user_id"
   end
 
+  create_table "user_password_resets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "reset_password_token", null: false
+    t.datetime "reset_password_sent_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["reset_password_token"], name: "unique_reset_password_token", unique: true
+    t.index ["user_id"], name: "index_user_password_resets_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -76,4 +86,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_150143) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "practice_record_details", "practice_records"
   add_foreign_key "practice_records", "users"
+  add_foreign_key "user_password_resets", "users"
 end

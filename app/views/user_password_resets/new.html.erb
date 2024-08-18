@@ -1,0 +1,17 @@
+<div class="flex flex-col text-center gap-5 p-10">
+  <h1 class="text-xl font-semibold">パスワードを再設定します</h1>
+  <p>Gyraphのアカウントに登録したメールアドレスを入力してください。</p>
+  <p>パスワード再設定用のメールを送信します。</p>
+</div>
+<div class="user-form-wrapper">
+  <%= form_with url: password_forgot_path, local: true do |form| %>
+    <div class="signup-and-login-field-wrapper">
+
+      <label>メールアドレス</label>
+      <%= form.text_field :email, class: "signup-and-login-field", autocomplete: "email", autocorrect: "off", autocapitalize: "none" %>
+
+      <%= form.submit "送信する", class: "basic-btn" %>
+    </div>
+  <% end %>
+</div>
+
