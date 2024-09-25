@@ -10,17 +10,17 @@ class UserPasswordResetsController < ApplicationController
         reset_password_sent_at: Time.zone.now
       )
       if @password_reset_instance.save
-        UserMailer.password_reset(password_reset_instance).deliver_now
+        UserMailer.password_reset(@password_reset_instance).deliver_now
         flash[:success] = 'パスワード再設定用のメールを送信しました。'
         redirect_to password_forgot_path
       else
-        flash.now[:alert] = @password_reset_instance.errors.full_messages
-        render :new
+        flash[:alert] = @password_reset_instance.errors.full_messages
+        render :new, status: :unprocessable_entity
       end
-    else
+    elsif user.nil?
       flash.now[:alert] = 'パスワード再設定用のメールの送信に失敗しました。'
       flash.now[:alert_detail] = 'メールアドレスが見つかりませんでした。'
-      render :new
+      render :new, status: :not_found
     end
   end
 
@@ -32,6 +32,12 @@ class UserPasswordResetsController < ApplicationController
   def update
     @password_reset_instance = UserPasswordReset.find_by!(reset_password_token: params[:token])
     user = @password_reset_instance.user
+
+    if params[:password].empty?
+      flash.now[:alert] = 'パスワードを入力してください。'
+      render :edit
+    end
+
     if user.update!(password: params[:password])
       redirect_to login_path
       flash[:success] = 'パスワードを再設定しました。再度ログインをお願いします。'
