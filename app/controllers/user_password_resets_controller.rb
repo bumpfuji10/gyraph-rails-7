@@ -17,7 +17,7 @@ class UserPasswordResetsController < ApplicationController
         flash[:alert] = @password_reset_instance.errors.full_messages
         render :new, status: :unprocessable_entity
       end
-    elsif user.nil?
+    else
       flash.now[:alert] = 'パスワード再設定用のメールの送信に失敗しました。'
       flash.now[:alert_detail] = 'メールアドレスが見つかりませんでした。'
       render :new, status: :not_found
