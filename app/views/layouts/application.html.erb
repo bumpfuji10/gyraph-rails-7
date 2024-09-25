@@ -23,8 +23,9 @@
                 <li class="mb-1"><%= message %></li>
               <% end %>
             </ul>
+          <% else %>
+            <%= flash[:alert_detail]%>
           <% end %>
-          <%= flash[:alert_detail]%>
         <% end %>
       </div>
     <% elsif flash[:success] %>
