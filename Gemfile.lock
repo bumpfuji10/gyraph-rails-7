@@ -105,6 +105,10 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     factory_bot (6.4.6)
@@ -163,6 +167,7 @@ GEM
     minitest (5.24.1)
     msgpack (1.7.2)
     mutex_m (0.2.0)
+    mysql2 (0.5.6)
     net-imap (0.4.14)
       date
       net-protocol
@@ -331,12 +336,14 @@ DEPENDENCIES
   byebug
   capybara
   debug
+  dotenv-rails
   factory_bot_rails
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
   letter_opener_web
   listen
+  mysql2
   puma (~> 6.0)
   rails (~> 7.1)
   rails-i18n
