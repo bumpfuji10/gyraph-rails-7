@@ -61,6 +61,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "byebug"
   gem "brakeman", require: false
+  gem 'mysql2'
 end
 
 group :development do
@@ -68,6 +69,8 @@ group :development do
   gem "web-console"
 
   gem "letter_opener_web"
+
+  gem 'mysql2'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
