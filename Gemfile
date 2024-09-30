@@ -62,6 +62,7 @@ group :development, :test do
   gem "byebug"
   gem "brakeman", require: false
   gem 'mysql2'
+  gem "dotenv-rails"
 end
 
 group :development do
