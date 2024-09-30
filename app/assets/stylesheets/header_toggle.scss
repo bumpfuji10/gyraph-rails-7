@@ -2,11 +2,9 @@
   position: relative;
 }
 
-.toggle-ul {
+.common-toggle-ul {
   width: 160px;
   position: absolute;
-  top: 100%;
-  right: 0px;
   background-color: white;
   list-style: none;
   padding: 0;
@@ -14,6 +12,15 @@
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
   z-index: 1;
   border-radius: 6px;
+}
+
+.toggle-ul {
+  top: 100%;
+  right: 0px;
+}
+
+.three-points-toggle-ul {
+  right: 20px;
 }
 
 .toggle-list {
@@ -28,6 +35,7 @@
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  background-color: white;
 }
 
 .toggle-link:hover {

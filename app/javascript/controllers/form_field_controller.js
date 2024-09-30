@@ -29,4 +29,17 @@ export default class extends Controller {
       fieldSet.remove();
     }
   }
+
+  markForRemoval(event) {
+    event.preventDefault();
+    const fieldSet = event.target.closest('.nested-fields');
+    if (fieldSet) {
+      const destroyField = fieldSet.querySelector('input[type="checkbox"][name*="_destroy"]');
+      if (destroyField) {
+        destroyField.checked = true;
+      }
+      fieldSet.style.display = 'none';
+    }
+  }
+
 }

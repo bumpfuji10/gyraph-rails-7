@@ -2,8 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   logout(event) {
-    event.preventDefault() // デフォルトのリンク動作を防止
-    const result = confirm("ログアウトしますか？")
+    event.preventDefault()
+    const result = confirm("ログアウトします。よろしいですか？")
     if (result) {
       // JSを使ってフォームを作成し送信
       const form = document.createElement("form")

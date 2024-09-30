@@ -1,0 +1,11 @@
+<div class="points pb-4" data-controller="toggle">
+  <%= image_tag "more_horizontal.png", data: { action: "click->toggle#toggle" }, style: "cursor: pointer;" %>
+  <ul class="common-toggle-ul three-points-toggle-ul hidden" data-toggle-target="menu">
+    <li class="toggle-list">
+      <%= link_to "編集する", edit_practice_record_path, class: 'toggle-link' %>
+    </li>
+    <li class="toggle-list">
+      <%= link_to "削除する", @practice_record, class: 'toggle-link', style: "color: red;", data: { turbo_method: :delete, turbo_confirm: "練習日誌を削除しますか？" } %>
+    </li>
+  </ul>
+</div>

@@ -1,12 +1,17 @@
 <div class="container practice-record-wrapper p-8">
-  <div class="flex items-center gap-x-2 pb-4">
-    <%= link_to user_path(@practice_record.user) do %>
-      <%= image_tag @practice_record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if @practice_record.user.icon.attached? %>
+  <div class="flex items-center gap-x-2 pb-4 justify-between">
+    <div class="user-info flex items-center gap-x-2 pb-4">
+      <%= link_to user_path(@practice_record.user) do %>
+        <%= image_tag @practice_record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if @practice_record.user.icon.attached? %>
+      <% end %>
+      <%= link_to user_path(@practice_record.user) do %>
+        <strong><%= @practice_record.user.name %></strong>
+      <% end %>
+      <p class="text-sm"><%= extract_domain_from_email(@practice_record.user.email) %></p>
+    </div>
+    <% if @practice_record.is_mine?(current_user) %>
+      <%= render 'shared/three_points_toggle' %>
     <% end %>
-    <%= link_to user_path(@practice_record.user) do %>
-      <strong><%= @practice_record.user.name %></strong>
-    <% end %>
-    <p class="text-sm"><%= extract_domain_from_email(@practice_record.user.email) %></p>
   </div>
   <%= @practice_record.practiced_date %>
   <h1 class="text-xl font-bold mb-4"><%= @practice_record.title %></h1>
@@ -14,5 +19,4 @@
     <h2 class="text-xl font-bold"><%= detail.activity_title %></h2>
     <%= format_with_line_breaks(detail.content) %>
   <% end %>
-
 <div>
