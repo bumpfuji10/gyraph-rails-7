@@ -1,11 +1,10 @@
-
 <div class="setting-toggle" data-controller="toggle">
   <% if current_user.icon.attached? %>
     <%= image_tag current_user.icon.variant(:large), data: { action: "click->toggle#toggle" }, class: "w-32 h-32 bg-gray-300 rounded-full shrink-0", style: "cursor: pointer; width: 50px; height: 50px;" %>
   <% else %>
     <%= image_tag 'user.svg', class: 'user-icon', data: { action: "click->toggle#toggle" } %>
   <% end %>
-  <ul class="toggle-ul hidden" data-toggle-target="menu">
+  <ul class="common-toggle-ul toggle-ul hidden" data-toggle-target="menu">
     <li class="toggle-list">
       <%= link_to user_path(current_user), class: 'toggle-link' do %>
         マイページ

@@ -7,4 +7,8 @@ class PracticeRecord < ApplicationRecord
   validates :practiced_date, presence: true
 
   alias_attribute :details, :practice_record_details
+
+  def is_mine?(user)
+    self.user_id == user.id
+  end
 end
