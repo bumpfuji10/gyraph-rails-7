@@ -9,12 +9,13 @@
       <% end %>
     </div>
     <% if current_user %>
-      <div class="flex gap-x-12">
+      <div class="flex gap-x-12 items-center">
         <div class="hidden md:flex gap-x-12 md:items-center">
           <%= link_to("日誌を書く", new_practice_record_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
           <%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
         </div>
         <%= render 'shared/header_toggle' %>
+        <%= image_tag "calendar.png", style: "width: 30px; cursor: pointer;"%>
       </div>
     <% else %>
       <div class="flex gap-x-12">
