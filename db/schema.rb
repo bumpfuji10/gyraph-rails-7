@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_17_092437) do
+ActiveRecord::Schema[7.1].define(version: 2024_10_05_160458) do
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_17_092437) do
   create_table "practice_record_details", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "practice_record_id", null: false
     t.string "activity_title", null: false
-    t.string "content", null: false
+    t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["practice_record_id"], name: "index_practice_record_details_on_practice_record_id"
