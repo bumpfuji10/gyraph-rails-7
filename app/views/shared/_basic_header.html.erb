@@ -15,7 +15,7 @@
           <%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
         </div>
         <%= render 'shared/header_toggle' %>
-        <%= image_tag "calendar.png", style: "width: 30px; cursor: pointer;"%>
+        <%= render 'shared/practice_calendar'%>
       </div>
     <% else %>
       <div class="flex gap-x-12">
