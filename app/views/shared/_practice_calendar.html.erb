@@ -1,0 +1,9 @@
+<div data-controller="calendar-modal">
+  <%= image_tag "calendar.png", style: "width: 30px; cursor: pointer;", data: { action: "click->calendar-modal#openCalendar" }%>
+
+  <div class="overlay hidden" data-calendar-modal-target="overlay">
+    <div class="basic-btn" data-action="click->calendar-modal#closeCalendar" class="mx-auto">
+      閉じる
+    </div>
+  </div>
+</div>
