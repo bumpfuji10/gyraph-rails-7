@@ -1,0 +1,7 @@
+<div class="calender bg-white rounded">
+  <%= turbo_frame_tag 'calendar' do %>
+    <%= month_calendar(month: date) do |date| %>
+      <%= date.day %>
+    <% end %>
+  <% end %>
+</div>
