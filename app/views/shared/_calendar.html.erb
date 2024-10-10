@@ -1,7 +1,18 @@
-<div class="calender bg-white rounded">
+<div class="calendar bg-white rounded">
   <%= turbo_frame_tag 'calendar' do %>
-    <%= month_calendar do |date| %>
-      <%= date.day %>
+    <%= month_calendar(events: @practice_records, attribute: :practiced_date) do |date| %>
+      <div class="day">
+        <%= date.day %>
+        <% if @practice_records.present? %>
+          <% @practice_records.each do |record| %>
+            <% if record.practiced_date == date %>
+              <div>
+                <%= link_to record.title, practice_record_path(record), data: { turbo: false } %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

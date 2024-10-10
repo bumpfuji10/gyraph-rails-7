@@ -2,10 +2,9 @@
   <%= image_tag "calendar.png", style: "width: 30px; cursor: pointer;", data: { action: "click->calendar-modal#openCalendar" }%>
 
   <div class="overlay hidden" data-calendar-modal-target="overlay">
-    <div class="calendar-area w-4/5 mx-auto">
-      <%= image_tag "close-cross.svg", style: "width: 30px; height: 30px;", data: { action: "click->calendar-modal#closeCalendar" } %>
+    <%= image_tag "close-cross.svg", style: "width: 30px; height: 30px;", data: { action: "click->calendar-modal#closeCalendar" } %>
 
-      <%= render "shared/calendar", date: @date %>
+    <div class="calendar-area w-4/5 mx-auto" data-calendar-modal-target="calendarContent">
     </div>
   </div>
 </div>
