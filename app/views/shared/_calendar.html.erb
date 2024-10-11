@@ -3,13 +3,11 @@
     <%= month_calendar(events: @practice_records, attribute: :practiced_date) do |date| %>
       <div class="day">
         <%= date.day %>
-        <% if @practice_records.present? %>
-          <% @practice_records.each do |record| %>
-            <% if record.practiced_date == date %>
-              <div>
-                <%= link_to record.title, practice_record_path(record), data: { turbo: false } %>
-              </div>
-            <% end %>
+        <% @practice_records.each do |record| %>
+          <% if record.practiced_date == date %>
+            <div>
+              <%= link_to record.title, practice_record_path(record), data: { turbo: false } %>
+            </div>
           <% end %>
         <% end %>
       </div>

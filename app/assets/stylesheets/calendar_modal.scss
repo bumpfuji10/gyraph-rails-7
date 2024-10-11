@@ -19,3 +19,13 @@
 .hidden {
   visibility: hidden;
 }
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  cursor: pointer;
+  right: 195px;
+  @media (max-width: 768px) {
+    right: 3px;
+  }
+}
