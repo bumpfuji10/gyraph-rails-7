@@ -1,0 +1,10 @@
+<div data-controller="calendar-modal">
+  <%= image_tag "calendar.png", style: "width: 30px; cursor: pointer;", data: { action: "click->calendar-modal#openCalendar" }%>
+
+  <div class="overlay hidden" data-calendar-modal-target="overlay">
+    <%= image_tag "close-cross.svg", class: "close-button", style: "width: 35px;", data: { action: "click->calendar-modal#closeCalendar" } %>
+
+    <div class="calendar-area mx-auto md:w-4/5" data-calendar-modal-target="calendarContent">
+    </div>
+  </div>
+</div>

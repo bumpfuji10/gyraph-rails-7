@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :index, :edit, :update]
   get "/account_activations/:token", to: "account_activations#edit", as: "account_activation"
   resources :practice_records
+  get '/calendars', to: 'calendars#show', as: 'calendar'
 
   get "password/forgot", to: "user_password_resets#new"
   post "password/forgot", to: "user_password_resets#create"
