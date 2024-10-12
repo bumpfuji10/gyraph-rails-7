@@ -9,7 +9,7 @@
       <% end %>
       <p class="text-sm"><%= extract_domain_from_email(@practice_record.user.email) %></p>
     </div>
-    <% if @practice_record.is_mine?(current_user) %>
+    <% if @practice_record.is_mine?(user: current_user) %>
       <%= render 'shared/three_points_toggle' %>
     <% end %>
   </div>
