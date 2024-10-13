@@ -24,6 +24,8 @@ class UsersController < ApplicationController
       redirect_to(login_path)
       flash[:success] = "アカウントの仮登録が完了しました。メールを確認してアカウントを有効化してください"
     else
+      flash.now[:alert] = "アカウントの仮登録に失敗しました。"
+      flash.now[:alert_detail] = @user.errors.full_messages
       render(:new, status: :unprocessable_entity)
     end
   end
