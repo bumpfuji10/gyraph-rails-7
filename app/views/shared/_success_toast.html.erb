@@ -1,5 +1,5 @@
 <div class="toast-container">
-  <div data-controller="toast" data-toast-target="toast" class="success-toast shadow-md hidden">
+  <div data-controller="toast" data-toast-target="toast" data-action="click->toast#hideToastOnClick" class="success-toast shadow-md hidden">
     <strong><%= flash[:success] %></strong>
   </div>
 </div>
