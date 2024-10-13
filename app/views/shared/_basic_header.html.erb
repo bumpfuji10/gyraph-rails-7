@@ -14,8 +14,8 @@
           <%= link_to("日誌を書く", new_practice_record_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
           <%= link_to("日誌一覧", practice_records_path, class: "text-sm font-semibold leading-6 text-gray-900") %>
         </div>
-        <%= render 'shared/header_toggle' %>
         <%= render 'shared/practice_calendar'%>
+        <%= render 'shared/header_toggle' %>
       </div>
     <% else %>
       <div class="flex gap-x-12">
