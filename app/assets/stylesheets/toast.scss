@@ -1,0 +1,54 @@
+@keyframes fadeInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(50%);
+  }
+}
+
+@keyframes fadeOutToTop {
+  from {
+    opacity: 1;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.fade-in {
+  animation: fadeInFromTop 0.5s forwards;
+}
+
+.fade-out {
+  animation: fadeOutToTop 0.5s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+.toast-container {
+  display: flex;
+  justify-content: center;
+}
+
+.success-toast {
+  position: fixed;
+  background-color: rgb(220,252,231);
+  border: 1px solid #4ade80;
+  color: rgb(21, 128, 61);
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  top: 3%;
+}
+
+.alert-toast {
+  position: fixed;
+  top: 3%
+}

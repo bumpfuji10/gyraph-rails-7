@@ -1,0 +1,22 @@
+<div class="toast-container">
+  <div data-controller="toast" data-toast-target="toast" data-action="click->toast#hideToastOnClick" class="alert-toast bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative text-center mx-auto max-w-md md:max-w-lg lg:max-w-xl mt-8 shadow-md" role="alert">
+    <% if flash[:alert_detail].nil? %>
+      <strong class="font-bold block">
+        <%= flash[:alert] %>
+      </strong>
+    <% else %>
+      <strong class="font-bold block pb-4"><%= flash[:alert] %></strong>
+    <% end %>
+    <% if flash[:alert_detail] %>
+      <% if flash[:alert_detail].is_a?(Array) %>
+        <ul class="list-disc list-inside text-left">
+          <% flash[:alert_detail].each do |message| %>
+            <li class="mb-1"><%= message %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= flash[:alert_detail].html_safe %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
