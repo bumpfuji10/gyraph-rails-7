@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
       redirect_to(practice_records_path)
     else
       flash.now[:alert] = "ログインできませんでした"
-      flash.now[:alert_detail] = "メールアドレスまたはパスワードが間違っています"
+      flash.now[:alert_detail] = "メールアドレスまたはパスワードに<br>誤りがあります"
       render :new, status: :unprocessable_entity
     end
   end
