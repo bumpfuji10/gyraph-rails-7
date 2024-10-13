@@ -4,14 +4,10 @@ export default class extends Controller {
   static targets = ["toast"]
 
   connect() {
-    this.showToast();
-  }
-
-  showToast() {
     this.toastTarget.classList.remove("hidden");
     this.toastTarget.classList.add("fade-in");
 
-    setTimeout(() => {
+    this.timeout = setTimeout(() => {
       this.hideToast();
     }, 300000);
   }
@@ -19,9 +15,10 @@ export default class extends Controller {
   hideToast() {
     this.toastTarget.classList.remove("fade-in");
     this.toastTarget.classList.add("fade-out");
+  }
 
-    this.toastTarget.addEventListener('animationend', () => {
-      this.toastTarget.classList.add("hidden");
-    }, { once: true });
+  hideToastOnClick() {
+    clearTimeout(this.timeout);
+    this.hideToast();
   }
 }
