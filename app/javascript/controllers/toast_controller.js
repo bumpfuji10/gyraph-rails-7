@@ -9,7 +9,7 @@ export default class extends Controller {
 
     this.timeout = setTimeout(() => {
       this.hideToast();
-    }, 300000);
+    }, 3000);
   }
 
   hideToast() {
