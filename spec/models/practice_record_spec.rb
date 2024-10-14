@@ -55,4 +55,28 @@ RSpec.describe PracticeRecord, type: :model do
       end
     end
   end
+
+  describe "methods" do
+
+    describe "is_mine?" do
+      let(:user) { FactoryBot.create(:user) }
+      let(:other_user) { FactoryBot.create(:user, email: "other_user@test.com") }
+      let(:practice_record) { FactoryBot.create(:practice_record, user: user) }
+
+      context "自分の練習日誌の場合" do
+
+        it "trueを返す" do
+          expect(practice_record.is_mine?(user: user)).to eq true
+        end
+
+      end
+
+      context "他人の練習日誌の場合" do
+
+        it "falseを返す" do
+          expect(practice_record.is_mine?(user: other_user)).to eq false
+        end
+      end
+    end
+  end
 end
