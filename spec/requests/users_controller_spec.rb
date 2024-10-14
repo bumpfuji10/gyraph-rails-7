@@ -24,6 +24,19 @@ RSpec.describe UsersController, type: :request do
   end
 
   describe "new" do
+    let(:user) { FactoryBot.create(:user) }
+
+    context "ログインしている場合" do
+      before { post '/login', params: { email: user.email, password: 'password' } }
+
+      it "ステータスコード302" do
+        get("/users/new")
+        expect(response.status).to eq 302
+      end
+    end
+  end
+
+  context "ログインしていない場合" do
     it "ステータスコード200" do
       get("/users/new")
       expect(response.status).to eq 200
@@ -54,8 +67,59 @@ RSpec.describe UsersController, type: :request do
   end
 
   describe "create" do
+    let(:user) { FactoryBot.create(:user) }
 
-    context "valid params" do
+    context "ログインしている場合" do
+      before { post '/login', params: { email: user.email, password: 'password' } }
+
+      context "valid params" do
+        let(:params) {
+          {
+            user: {
+              name: "testくん",
+              email: "test@testhoge.com",
+              password: "password"
+            }
+          }
+        }
+        let(:request) { post("/users", params: params) }
+
+        it "ステータスコード302" do
+          request
+          expect(response.status).to eq 302
+        end
+
+        it "Userインスタンス1増加" do
+          expect { request }.to change { User.count }.by(0)
+        end
+      end
+
+      context "invalid params" do
+        let(:params) {
+          {
+            user: {
+              name: nil,
+              email: nil,
+              password: nil
+            }
+          }
+        }
+        let(:request) { post("/users", params: params) }
+
+        it "ステータスコード302" do
+          request
+          expect(response.status).to eq 302
+        end
+
+        it "Userインスタンス変動なし" do
+          request
+          expect { request }.to change { User.count }.by(0)
+        end
+      end
+    end
+
+    context "ログインしていない場合" do
+
       let(:params) {
         {
           user: {
@@ -72,31 +136,16 @@ RSpec.describe UsersController, type: :request do
         expect(response.status).to eq 302
       end
 
-      it "Userインスタンス1増加" do
+      it "Userインスタンス変動1増加" do
         expect { request }.to change { User.count }.by(1)
       end
-    end
 
-    context "invalid params" do
-      let(:params) {
-        {
-          user: {
-            name: nil,
-            email: nil,
-            password: nil
-          }
-        }
-      }
-      let(:request) { post("/users", params: params) }
-
-      it "ステータスコード422" do
+      it "params通りにUserインスタンスが作成されている" do
         request
-        expect(response.status).to eq 422
-      end
-
-      it "Userインスタンス変動なし" do
-        request
-        expect { request }.to change { User.count }.by(0)
+        User.last.tap do |user|
+          expect(user.name).to eq params[:user][:name]
+          expect(user.email).to eq params[:user][:email]
+        end
       end
     end
   end

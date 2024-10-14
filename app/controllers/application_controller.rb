@@ -11,4 +11,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def redirect_if_logged_in
+    if current_user
+      flash[:alert] = "すでにログインしています"
+      redirect_to practice_records_path
+    end
+  end
 end

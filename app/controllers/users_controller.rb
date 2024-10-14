@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :redirect_if_not_logged_in, only: [:new, :create, :index, :edit, :show, :update]
+  before_action :redirect_if_not_logged_in, only: [:index, :edit, :show, :update]
+  before_action :redirect_if_logged_in, only: [:new, :create]
 
   def show
     @user = User.find_by(id: params[:id])
