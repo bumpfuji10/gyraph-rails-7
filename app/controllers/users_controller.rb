@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :redirect_if_not_logged_in, only: [:index, :edit, :show, :update]
   before_action :redirect_if_logged_in, only: [:new, :create]
 
   def show
@@ -46,12 +47,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :profile, :icon)
+    params.require(:user).permit(:name, :email, :password, :profile)
   end
 
-  def redirect_if_logged_in
-    if current_user
-      redirect_to(practice_records_path)
-    end
-  end
 end

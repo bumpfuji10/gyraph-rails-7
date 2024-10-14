@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :redirect_if_logged_in, only: [:new]
-  skip_before_action :redirect_if_logged_in, only: [:new, :destroy]
+  before_action :redirect_if_logged_in, only: [:new, :create]
   helper_method :current_user
 
   def current_user

@@ -1,6 +1,6 @@
 class PracticeRecordsController < ApplicationController
 
-  before_action :redirect_if_logged_in, only: [:new, :show]
+  before_action :redirect_if_not_logged_in, only: [:new, :show, :edit, :create, :update, :destroy]
 
   def index
     @practice_records = PracticeRecord.all.order(id: :desc)
