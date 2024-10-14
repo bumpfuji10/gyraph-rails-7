@@ -1,15 +1,24 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PracticeRecordsHelper. For example:
-#
-# describe PracticeRecordsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
 RSpec.describe PracticeRecordsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  describe "practiced_date_format_ja" do
+    let(:practice_record) do
+      FactoryBot.create(:practice_record)
+    end
+
+    let(:practiced_date) { practice_record.practiced_date }
+
+    it "日本語の日付フォーマットに変換すること" do
+      expect(practiced_date_format_ja(practiced_date)).to eq practiced_date.strftime("%Y/%m/%d")
+    end
+  end
+
+  describe "format_with_line_breaks" do
+    let(:text) { "テスト\r\nテスト" }
+
+    it "改行コードをbrタグに変換すること" do
+      expect(format_with_line_breaks(text)).to eq "テスト<br />テスト"
+    end
+  end
 end
