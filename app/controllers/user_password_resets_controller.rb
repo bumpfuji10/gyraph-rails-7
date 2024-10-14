@@ -1,5 +1,5 @@
 class UserPasswordResetsController < ApplicationController
-  before_action :redirect_if_logged_in, only: [:new, :create]
+  before_action :redirect_if_logged_in, only: [:new, :edit, :create, :update]
 
   def new; end
 
@@ -16,8 +16,8 @@ class UserPasswordResetsController < ApplicationController
         redirect_to password_forgot_path
       else
         flash.now[:alert] = 'パスワード再設定用のメールの送信に失敗しました。'
-        flash.now[:alert_detail] = @password_reset_instance.errors.full_messages
-        render :new, status: :unprocessable_entity
+        flash.now[:alert_detail] = "お手数ですが、再度お試しください。"
+        render :new, status: :internal_server_error
       end
     else
       flash.now[:alert] = 'パスワード再設定用のメールの送信に失敗しました。'
@@ -33,21 +33,20 @@ class UserPasswordResetsController < ApplicationController
 
   def update
     @password_reset_instance = UserPasswordReset.find_by!(reset_password_token: params[:token])
-    user = @password_reset_instance.user
+    @user = @password_reset_instance.user
 
     if params[:password].empty?
       flash.now[:alert] = 'パスワードを入力してください。'
-      render :edit
+      render :edit, status: :bad_request
     end
 
-    if user.update!(password: params[:password])
-      redirect_to login_path
+    if @user.update(password: params[:password])
       flash[:success] = 'パスワードを再設定しました。再度ログインをお願いします。'
+      redirect_to login_path
     else
-      render :edit
       flash.now[:alert] = 'パスワードの再設定に失敗しました。'
+      render :edit, status: :internal_server_error
     end
-
   end
 
   def user_password_reset_params
