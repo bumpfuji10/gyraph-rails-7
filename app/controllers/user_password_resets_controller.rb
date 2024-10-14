@@ -1,4 +1,5 @@
 class UserPasswordResetsController < ApplicationController
+  before_action :redirect_if_logged_in, only: [:new, :create]
 
   def new; end
 
@@ -14,7 +15,8 @@ class UserPasswordResetsController < ApplicationController
         flash[:success] = 'パスワード再設定用のメールを送信しました。'
         redirect_to password_forgot_path
       else
-        flash[:alert] = @password_reset_instance.errors.full_messages
+        flash.now[:alert] = 'パスワード再設定用のメールの送信に失敗しました。'
+        flash.now[:alert_detail] = @password_reset_instance.errors.full_messages
         render :new, status: :unprocessable_entity
       end
     else
