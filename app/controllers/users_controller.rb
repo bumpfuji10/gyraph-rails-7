@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :redirect_if_logged_in, only: [:new, :create]
+  before_action :redirect_if_not_logged_in, only: [:index, :edit, :show, :update]
 
   def show
     @user = User.find_by(id: params[:id])
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :profile, :icon)
+    params.require(:user).permit(:name, :email, :password, :profile)
   end
 
   def redirect_if_logged_in
