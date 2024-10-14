@@ -6,7 +6,7 @@ RSpec.describe SessionsController, type: :request do
   describe "GET /new" do
 
     context "ログインしている場合" do
-      before { post '/login', params: { email: user.email, password: 'password' } }
+      before { post '/login', params: { email: user.email, password: 'sessionpassword' } }
 
       it "ステータスコード302" do
         get("/login")
@@ -26,10 +26,10 @@ RSpec.describe SessionsController, type: :request do
   describe "POST /login" do
 
     context "ログインしている場合" do
-      before { post '/login', params: { email: user.email, password: 'password' } }
+      before { post '/login', params: { email: user.email, password: 'sessionpassword' } }
 
       it "ステータスコード302" do
-        post("/login", params: { email: user.email, password: 'password' })
+        post("/login", params: { email: user.email, password: 'sessionpassword' })
         expect(response.status).to eq 302
       end
     end
