@@ -2,7 +2,11 @@
   <h1 class="text-xl font-semibold">プロフィール設定</h1>
 </div>
 <div class="profile-wrapper">
-  <%= image_tag current_user.icon.variant(:large), class: "bg-gray-300 rounded-full" if current_user.icon.attached? %>
+  <% if current_user.icon.attached? %>
+    <%= image_tag current_user.icon.variant(:large), class: "bg-gray-300 rounded-full" %>
+  <% else %>
+    <%= image_tag 'user.svg', class: 'user-icon', style: "width: 100px; height: 100px;" %>
+  <% end %>
   <div class="">
     <%= form_with model: @user, method: :patch, local: true do |form| %>
       <div class="grid gap-1">
