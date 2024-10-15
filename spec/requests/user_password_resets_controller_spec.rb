@@ -125,7 +125,7 @@ RSpec.describe "UserPasswordResets", type: :request do
       end
     end
 
-    xcontext "PATCH /password/reset/:token" do
+    context "PATCH /password/reset/:token" do
 
       context "ログインしている場合" do
 
@@ -164,8 +164,13 @@ RSpec.describe "UserPasswordResets", type: :request do
             post("/password/forgot", params: { email: user.email })
           end
 
+          it "ステータスコード422" do
+            patch("/password/reset/#{user.user_password_resets.last.reset_password_token}", params: { password: " " })
+            expect(response.status).to eq 422
+          end
+
           it "パスワードが更新されていないこと" do
-            patch("/password/reset/#{user.user_password_resets.last.reset_password_token}", params: { password: "" })
+            patch("/password/reset/#{user.user_password_resets.last.reset_password_token}", params: { password: " " })
             expect(user.authenticate("password")).to eq user
           end
         end

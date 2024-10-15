@@ -83,6 +83,30 @@ RSpec.describe User, type: :model do
           expect(user_has_not_password).to be_invalid
         end
       end
+
+      context "passwordが8文字以上" do
+        let(:user) { FactoryBot.build(:user, name: "test user", email: "test@test.com", password: "a" * 8) }
+
+        it "userの作成に成功" do
+          expect(user.save).to eq true
+        end
+
+        it "userが有効" do
+          expect(user).to be_valid
+        end
+      end
+
+      context "passwordが8文字未満" do
+        let(:user) { FactoryBot.build(:user, name: "test user", email: "test@test.com", password: "a" * 7) }
+
+        it "userの作成に失敗" do
+          expect(user.save).to eq false
+        end
+
+        it "userが無効" do
+          expect(user).to be_invalid
+        end
+      end
     end
   end
 
