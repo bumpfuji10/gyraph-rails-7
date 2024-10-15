@@ -36,11 +36,10 @@ class UserPasswordResetsController < ApplicationController
     @user = @password_reset_instance.user
 
     if params[:password].empty?
-      flash.now[:alert] = 'パスワードを入力してください。'
-      render :edit, status: :bad_request
-    end
-
-    if @user.update(password: params[:password])
+      flash.now[:alert] = 'パスワードの再設定に失敗しました'
+      flash.now[:alert_detail] = 'パスワードを入力してください'
+      render :edit, status: :unprocessable_entity
+    elsif @user.update(password: params[:password])
       flash[:success] = 'パスワードを再設定しました。再度ログインをお願いします。'
       redirect_to login_path
     else
