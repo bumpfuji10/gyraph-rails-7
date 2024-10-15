@@ -125,7 +125,7 @@ RSpec.describe "UserPasswordResets", type: :request do
       end
     end
 
-    xcontext "PATCH /password/reset/:token" do
+    context "PATCH /password/reset/:token" do
 
       context "ログインしている場合" do
 
