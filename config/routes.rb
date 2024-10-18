@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   get "logout", to: "sessions#destroy"
   delete "logout", to: "sessions#destroy"
+
+  resources :likes, only: [:create, :destroy], default: { format: :turbo_stream }
 end
