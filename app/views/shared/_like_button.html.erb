@@ -1,0 +1,6 @@
+<%= link_to likes_path(practice_record_id: practice_record.id),
+            method: :post,
+            data: { turbo_method: :post, turbo_frame: "like_button_#{practice_record.id}" },
+            class: "cursor-pointer" do %>
+  <%= image_tag liked ? "good-blue.svg" : "good-normal.svg", alt: "いいねボタン" %>
+<% end %>
