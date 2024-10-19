@@ -12,7 +12,7 @@ class UserPasswordResetsController < ApplicationController
       )
       if @password_reset_instance.save
         UserMailer.password_reset(@password_reset_instance).deliver_now
-        flash[:success] = 'パスワード再設定用のメールを送信しました。'
+        flash.now[:success] = 'パスワード再設定用のメールを送信しました。'
         redirect_to password_forgot_path
       else
         flash.now[:alert] = 'パスワード再設定用のメールの送信に失敗しました。'
@@ -44,7 +44,7 @@ class UserPasswordResetsController < ApplicationController
       redirect_to login_path
     else
       flash.now[:alert] = 'パスワードの再設定に失敗しました。'
-      render :edit, status: :internal_server_error
+      render :edit, status: :unprocessable_entity
     end
   end
 
