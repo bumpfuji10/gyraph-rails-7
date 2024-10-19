@@ -6,15 +6,17 @@
       <% @practice_records.each do |record| %>
         <div class="bg-white shadow rounded-lg p-6">
           <div class="grid gap-2">
-            <div class="flex items-center gap-x-2">
-              <%= link_to user_path(record.user) do %>
-                <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if record.user.icon.attached? %>
-              <% end %>
-              <%= link_to user_path(record.user) do %>
-                <strong><%= record.user.name %></strong>
-              <% end %>
-              <p class="text-sm"><%= extract_domain_from_email(record.user.email) %></p>
-            </div>
+              <div class="flex justify-between">
+                <div class="flex items-center gap-x-2">
+                  <%= link_to user_path(record.user) do %>
+                    <%= image_tag record.user.icon.variant(:small), class: "bg-gray-300 rounded-full shrink-0" if record.user.icon.attached? %>
+                  <% end %>
+                  <%= link_to user_path(record.user) do %>
+                    <strong><%= record.user.name %></strong>
+                  <% end %>
+                  <p class="text-sm"><%= extract_domain_from_email(record.user.email) %></p>
+                </div>
+              </div>
             <%= link_to practice_record_path(record) do %>
               <%= practiced_date_format_ja(record.practiced_date) %>
               <div class="text-xl font-bold">
