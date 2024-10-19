@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "UserPasswordResets", type: :request do
+RSpec.describe UserPasswordResetsController, type: :request do
   let(:user) { FactoryBot.create(:user, email: "test@user.com", password: "password") }
 
   describe "GET /password/forgot" do

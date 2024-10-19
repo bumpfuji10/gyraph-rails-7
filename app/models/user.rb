@@ -17,7 +17,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password_digest, presence: true
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :password, presence: true, length: { minimum: 8 }, if: -> { password_required? }
 
   has_secure_password
 
@@ -38,5 +38,19 @@ class User < ApplicationRecord
 
   def expired?
     confirmation_sent_at < 1.hours.ago
+  end
+
+  private
+
+  def password_required?
+    new_record? || password_present_and_changed?
+  end
+
+  def password_present_and_changed?
+    password_digest.present? && ecrypted_password_changed?
+  end
+
+  def ecrypted_password_changed?
+    !password_digest.nil? && password_digest_changed?
   end
 end
