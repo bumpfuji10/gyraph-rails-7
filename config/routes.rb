@@ -5,10 +5,17 @@ Rails.application.routes.draw do
   end
 
   root "pages#home"
+
   get "/signup", to: "users#new"
+
   resources :users, only: [:new, :create, :show, :index, :edit, :update]
+
   get "/account_activations/:token", to: "account_activations#edit", as: "account_activation"
-  resources :practice_records
+
+  resources :practice_records do
+    resources :likes, only: [:create, :destroy], default: { format: :turbo_stream }
+  end
+
   get '/calendars', to: 'calendars#show', as: 'calendar'
 
   get "password/forgot", to: "user_password_resets#new"
@@ -20,6 +27,4 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   get "logout", to: "sessions#destroy"
   delete "logout", to: "sessions#destroy"
-
-  resources :likes, only: [:create, :destroy], default: { format: :turbo_stream }
 end
