@@ -1,6 +1,17 @@
-<%= link_to likes_path(practice_record_id: practice_record.id),
-            method: :post,
-            data: { turbo_method: :post, turbo_frame: "like_button_#{practice_record.id}" },
-            class: "cursor-pointer" do %>
-  <%= image_tag liked ? "good-blue.svg" : "good-normal.svg", alt: "いいねボタン" %>
-<% end %>
+<turbo-frame id="like_button_<%= practice_record.id %>">
+  <% if liked %>
+    <%= link_to practice_record_like_path(practice_record_id: practice_record.id, id: like.id),
+                method: :delete,
+                data: { turbo_method: :delete, turbo_frame: "like_button_#{practice_record.id}" },
+                class: "cursor-pointer" do %>
+      <%= image_tag "good-blue.svg", alt: "いいね済ボタン" %>
+    <% end %>
+  <% else %>
+    <%= link_to practice_record_likes_path(practice_record_id: practice_record.id),
+                method: :post,
+                data: { turbo_method: :post, turbo_frame: "like_button_#{practice_record.id}" },
+                class: "cursor-pointer" do %>
+      <%= image_tag "good-normal.svg", alt: "いいねボタン" %>
+    <% end %>
+  <% end %>
+</turbo-frame>
