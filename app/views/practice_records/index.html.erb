@@ -16,12 +16,6 @@
                   <% end %>
                   <p class="text-sm"><%= extract_domain_from_email(record.user.email) %></p>
                 </div>
-                <% if current_user %>
-                  <%= render 'shared/like_button',
-                              practice_record: record,
-                              liked: current_user.likes.exists?(practice_record: record),
-                              like: current_user.likes.find_by(practice_record: record) %>
-                <% end %>
               </div>
             <%= link_to practice_record_path(record) do %>
               <%= practiced_date_format_ja(record.practiced_date) %>
