@@ -1,0 +1,13 @@
+.like-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 15px;
+  border-radius: 20px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.like-container:hover {
+  background-color: #e0e0e0;
+}
