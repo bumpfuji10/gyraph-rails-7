@@ -1,6 +1,31 @@
-<div class="flex justify-center">
-  <h1>まだ実装されてません</h1>
+<div data-controller="home" class="relative">
+  <%= image_tag "home_banner.png", style: "height: 500px;", class: "w-full" %>
+  <div class="flex">
+    <div data-home-target="welcomeMessage" class="welcome hidden fade-in w-full justify-around">
+      <div class="welcome--logo"><%= image_tag "gyraph_sphere.png", class: "w-24 w-36" %></div>
+      <div class="welcome-content grid gap-8">
+        <h1 class="welcome-content-message text-xl font-bold">毎日の練習を記録しよう。</h1>
+        <h1 class="welcome-content-message text-xl font-bold">振り返ろう。</h1>
+        <h1 class="welcome-content-message text-xl font-bold">シェアしよう。</h1>
+        <h1 class="welcome-content-message text-4xl font-bold text-center">Gyraph.</h1>
+      </div>
+    </div>
+  </div>
 </div>
 
+<style>
+.welcome {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  gap: 8px;
+  top: 25%;
 
-
+  @media (max-width: 768px) {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+    top: 10%;
+  }
+}
+</style>

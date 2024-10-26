@@ -1,0 +1,67 @@
+//.home-banner {
+  //background-image: url('<%= asset_path("home_banner.png") %>');
+//}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2.5s ease-out forwards;
+  animation-fill-mode: forwards;
+}
+
+/* ロゴ専用のフェードイン */
+.logo {
+  opacity: 0;
+}
+
+.fade-in-logo {
+  animation: fadeInLogo 2.5s ease-out forwards;
+}
+
+@keyframes fadeInLogo {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 他のメッセージ用のアニメーション */
+.welcome-content-message {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.show-toast-animation {
+  animation: slideIn 2.5s ease-out forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
