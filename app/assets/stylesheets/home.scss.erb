@@ -1,6 +1,18 @@
-//.home-banner {
-  //background-image: url('<%= asset_path("home_banner.png") %>');
-//}
+.welcome {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  gap: 400px;
+  top: 25%;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    display: grid;
+    justify-items: center;
+    gap: 2rem;
+    top: 10%;
+  }
+}
 
 .fade-in {
   opacity: 0;
