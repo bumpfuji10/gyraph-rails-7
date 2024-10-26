@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
     this.toastTarget.classList.remove("hidden");
-    this.toastTarget.classList.add("fade-in");
+    this.toastTarget.classList.add("slide-in");
 
     this.timeout = setTimeout(() => {
       this.hideToast();
@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   hideToast() {
-    this.toastTarget.classList.remove("fade-in");
+    this.toastTarget.classList.remove("slide-in");
     this.toastTarget.classList.add("fade-out");
   }
 
